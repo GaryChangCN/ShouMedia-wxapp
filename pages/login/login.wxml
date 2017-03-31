@@ -1,0 +1,34 @@
+<view class="login-urp-c">
+    <form bindsubmit="formSubmit" bindreset="formReset" class="form-c">
+        <view class="title-c">
+            <text class="title">Login</text>
+        </view>
+        <view class="input-c">
+            <input
+                type="digit"
+                placeholder="urp帐号"
+                data-name="username"
+                placeholder-class="placeholder"
+                value="{{username}}"
+                bindinput="handleChange"
+                class="{{errors.username?'errors':''}}"
+            />
+            <input
+                type="password"
+                data-name="password"
+                placeholder="urp密码"
+                placeholder-class="placeholder"
+                value="{{password}}"
+                bindinput="handleChange"
+            />
+        </view>
+        <view>
+            <button
+                disabled="{{loading}}"
+                class="submit"
+                loading="{{loading}}"
+                formType="submit"
+            >登录</button>
+        </view>
+    </form>
+</view>

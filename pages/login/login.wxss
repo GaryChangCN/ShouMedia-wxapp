@@ -1,0 +1,74 @@
+view{
+    display: flex;
+}
+text,input,.placeholder,button{
+    font-family: "微软雅黑";
+}
+
+.login-urp-c{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin-top: 200rpx;
+}
+.form-c{
+    width: 600rpx;
+    flex-direction: column;
+    align-items: center;
+}
+.title-c{
+    widows: inherit;
+    justify-content: center;
+    margin-bottom: 50rpx;
+}
+.title{
+    font-size: 100rpx;
+    color: #66cccc;
+}
+.input-c{
+    width: inherit;
+    flex-direction: column;
+}
+.placeholder,input{
+    font-weight: 100;
+    font-size: 30rpx;
+    color: lightgrey;
+}
+input{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #66cccc;
+    height: 80rpx;
+    margin-bottom: 20rpx;
+    padding-left: 30rpx;
+    color: #66cccc;
+}
+input.errors{
+    border-color: #d98e92;
+}
+.submit{
+    background: transparent;
+    border: 1px solid #66cccc;
+    border-radius: 0px;
+    color: #66cccc;
+    height: 80rpx;
+    width: 350rpx;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    box-shadow: 0px 0px 2px 0px #aae7e7;
+}
+.submit[disabled]{
+    background: transparent !important;
+    border-color: lightgrey;
+    color: lightgrey;
+    box-shadow: initial;
+}
+.button-hover{
+    color: #2b6071;
+    border-color: #2b6071;
+    box-shadow: initial;
+}

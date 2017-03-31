@@ -1,0 +1,17 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/login/login"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#66cccc",
+        "navigationBarTitleText": "海大新媒体",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#eee",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    },
+    "debug": false
+}

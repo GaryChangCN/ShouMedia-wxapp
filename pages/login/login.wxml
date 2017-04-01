@@ -4,23 +4,35 @@
             <text class="title">Login</text>
         </view>
         <view class="input-c">
-            <input
-                type="digit"
-                placeholder="urp帐号"
-                data-name="username"
-                placeholder-class="placeholder"
-                value="{{username}}"
-                bindinput="handleChange"
-                class="{{errors.username?'errors':''}}"
-            />
-            <input
-                type="password"
-                data-name="password"
-                placeholder="urp密码"
-                placeholder-class="placeholder"
-                value="{{password}}"
-                bindinput="handleChange"
-            />
+            <div class="item-c">
+                <input
+                    type="digit"
+                    placeholder="urp帐号"
+                    data-name="username"
+                    placeholder-class="placeholder"
+                    value="{{username}}"
+                    bindinput="handleChange"
+                    bindblur="handleBlur"
+                    focus="true"
+                    bindfocus="handleFocus"
+                    class="{{errors.username?'errors':''}}"
+                />
+                <text class="err-msg" hidden="{{!errors.username}}">{{errors.username}}</text>
+            </div>
+            <div class="item-c">
+                <input
+                    type="password"
+                    data-name="password"
+                    placeholder="urp密码"
+                    placeholder-class="placeholder"
+                    value="{{password}}"
+                    bindinput="handleChange"
+                    bindfocus="handleFocus"
+                    bindblur="handleBlur"                
+                    class="{{errors.password?'errors':''}}"                
+                />
+                <text class="err-msg" hidden="{{!errors.password}}">{{errors.password}}</text>
+            </div>
         </view>
         <view>
             <button

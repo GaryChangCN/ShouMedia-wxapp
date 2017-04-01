@@ -1,70 +1,105 @@
-var pathname=require("../../utils/url");
+var pathname = require("../../utils/url");
 Page({
     data: {
-        username:"",
-        password:"",
-        loading:false,
-        errors:{
-            username:false,
-            password:false
+        username: "",
+        password: "",
+        loading: false,
+        errors: {
+            username: false,
+            password: false
         }
     },
-    handleChange(e){
-        var {value}=e.detail;
-        var {name}=e.target.dataset;
+    handleChange(e) {
+        var { value } = e.detail;
+        var { name } = e.target.dataset;
         this.setData({
-            [name]:value
+            [name]: value
         });
     },
-    formSubmit(){
+    handleBlur() {
+        this.validation();
+    },
+    handleFocus(e) {
+        var { name } = e.target.dataset;
+        var { errors } = this.data;
+        errors[name] = false;
         this.setData({
-            loading:true
+            errors
         });
-        var _this=this;
-        var {username,password}=this.data;
+    },
+    formSubmit() {
+        if (this.validation()) {
+            return null;
+        }
+        this.setData({
+            loading: true
+        });
+        var _this = this;
+        var { username, password } = this.data;
         wx.request({
-            url: pathname+'/api/urpLogin',
-            method:"POST",
+            url: pathname + '/api/urpLogin',
+            method: "POST",
             header: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data:{
+            data: {
                 username,
-                urppassword:password
+                urppassword: password
             },
             success(res) {
-                console.log(res.data);
+                var { data, err } = res;
+                if (err) {
+                    this.showError();
+                } else {
+                    console.log(data);
+                }
             },
-            fail(){
-
+            fail() {
+                this.showError();
             },
             complete() {
                 _this.setData({
-                    loading:false
+                    loading: false
                 });
             }
         });
 
     },
-    onLoad: function(options) {
+    showError() {
+        wx.showToast({
+            title: '网络错误',
+            icon: 'loading',
+            duration: '2000'
+        });
     },
-    validation(){
-        var {username,password}=this.data;
-        var errors={
-            username:false,
-            password:false
+    cleanForm() {
+        this.setData({
+            username: "",
+            password: "",
+            loading: false,
+            errors: {
+                username: false,
+                password: false
+            }
+        })
+    },
+    validation() {
+        var { username, password } = this.data;
+        var errors = {
+            username: false,
+            password: false
         };
-        if(!username){
-            errors.username="用户名不能为空";
-        }else if(/[^0-9]/.test(username)){
-            errors.username="用户名为纯数字"
+        if (!username) {
+            errors.username = "用户名不能为空";
+        } else if (/[^0-9]/.test(username)) {
+            errors.username = "用户名为纯数字"
         }
-        if(!password){
-            errors.password="密码不能为空";
+        if (!password) {
+            errors.password = "密码不能为空";
         }
         this.setData({
             errors
         });
-        return !username&&!password;
+        return !username && !password;
     }
 })

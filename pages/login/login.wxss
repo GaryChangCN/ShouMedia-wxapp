@@ -1,3 +1,8 @@
+page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 view{
     display: flex;
 }
@@ -6,11 +11,11 @@ text,input,.placeholder,button{
 }
 
 .login-urp-c{
-    position: relative;
     width: 100%;
     height: 100%;
     justify-content: center;
-    margin-top: 200rpx;
+    align-items: center;
+    margin-top: -100rpx;
 }
 .form-c{
     width: 600rpx;
@@ -40,10 +45,20 @@ input{
     width: 100%;
     border: 1px solid #66cccc;
     height: 80rpx;
-    margin-bottom: 20rpx;
     padding-left: 30rpx;
     color: #66cccc;
 }
+.item-c{
+    flex-direction: column;
+    height: 130rpx;
+    justify-content: flex-start;
+}
+.err-msg{
+    font-size: 20rpx;
+    height: 20rpx;
+    color: #d98e92;
+}
+
 input.errors{
     border-color: #d98e92;
 }
@@ -59,13 +74,13 @@ input.errors{
     align-items: center;
     justify-content: center;
     font-size: 30rpx;
-    box-shadow: 0px 0px 2px 0px #aae7e7;
 }
 .submit[disabled]{
     background: transparent !important;
     border-color: lightgrey;
     color: lightgrey;
-    box-shadow: initial;
+    box-shadow: 0px 0px 2px 0px #aae7e7;
+
 }
 .button-hover{
     color: #2b6071;

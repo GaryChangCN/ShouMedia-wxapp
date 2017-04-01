@@ -47,15 +47,15 @@ Page({
                 urppassword: password
             },
             success(res) {
-                var { data, err } = res;
+                var { data, err } = res.data;
                 if (err) {
-                    this.showError();
+                    _this.showError("账号密码错误");
                 } else {
                     console.log(data);
                 }
             },
             fail() {
-                this.showError();
+                _this.showError("网络错误");
             },
             complete() {
                 _this.setData({
@@ -65,11 +65,11 @@ Page({
         });
 
     },
-    showError() {
+    showError(title) {
         wx.showToast({
-            title: '网络错误',
+            title,
             icon: 'loading',
-            duration: '2000'
+            duration: 2000
         });
     },
     cleanForm() {

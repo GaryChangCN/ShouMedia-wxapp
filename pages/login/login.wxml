@@ -1,7 +1,7 @@
 <view class="login-urp-c">
     <form bindsubmit="formSubmit" bindreset="formReset" class="form-c">
         <view class="title-c">
-            <text class="title">Login</text>
+            <text class="title">绑定URP</text>
         </view>
         <view class="input-c">
             <div class="item-c">
@@ -40,7 +40,7 @@
                 class="submit"
                 loading="{{loading}}"
                 formType="submit"
-            >登录</button>
+            >绑定</button>
         </view>
     </form>
 </view>

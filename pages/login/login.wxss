@@ -28,8 +28,9 @@ text,input,.placeholder,button{
     margin-bottom: 50rpx;
 }
 .title{
-    font-size: 100rpx;
+    font-size: 70rpx;
     color: #66cccc;
+    font-weight: 200;
 }
 .input-c{
     width: inherit;
@@ -61,6 +62,7 @@ input{
 
 input.errors{
     border-color: #d98e92;
+    color: #d98e92;
 }
 .submit{
     background: transparent;
@@ -81,9 +83,4 @@ input.errors{
     color: lightgrey;
     box-shadow: 0px 0px 2px 0px #aae7e7;
 
-}
-.button-hover{
-    color: #2b6071;
-    border-color: #2b6071;
-    box-shadow: initial;
 }

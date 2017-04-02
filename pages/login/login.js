@@ -1,4 +1,6 @@
 var pathname = require("../../utils/url");
+var {login}=require('../../utils/wx');
+
 Page({
     data: {
         username: "",
@@ -8,6 +10,11 @@ Page({
             username: false,
             password: false
         }
+    },
+    onLoad(){
+        this.checkSession(function(){
+            console.log("未过期1");
+        })
     },
     handleChange(e) {
         var { value } = e.detail;
@@ -27,7 +34,23 @@ Page({
             errors
         });
     },
-    formSubmit() {
+    formSubmit(){
+        this.checkSession(this.fetchSubmit);
+    },
+    //检验登陆状态
+    checkSession(reslove,reject){
+        wx.checkSession({
+            success: function(){
+                reslove()
+            },
+            fail: function(){
+                reject();
+                login(wx);     
+            },
+        });
+    },
+    //登录 请求
+    fetchSubmit() {
         if (this.validation()) {
             return null;
         }
@@ -36,6 +59,7 @@ Page({
         });
         var _this = this;
         var { username, password } = this.data;
+        var thirdSession=wx.getStorageSync('3rd_session')
         wx.request({
             url: pathname + '/api/urpLogin',
             method: "POST",
@@ -44,14 +68,27 @@ Page({
             },
             data: {
                 username,
-                urppassword: password
+                urppassword: password,
+                thirdSession
             },
             success(res) {
                 var { data, err } = res.data;
-                if (err) {
+                var {urpPass,bindWxApp,userInfo}=data;
+                if(err&&!data){
+                    _this.showError("网络错误");
+                }else if (!urpPass) {
                     _this.showError("账号密码错误");
+                    _this.validation(true);
                 } else {
-                    console.log(data);
+                    if(bindWxApp){
+                        wx.setStorage({
+                            key: 'userInfo',
+                            data: JSON.stringify(userInfo)
+                        })
+                    }else{
+                        _this.showError("没有微信登录授权，请重新授权");
+                        login(wx);
+                    }
                 }
             },
             fail() {
@@ -65,6 +102,7 @@ Page({
         });
 
     },
+    //toast error
     showError(title) {
         wx.showToast({
             title,
@@ -72,6 +110,7 @@ Page({
             duration: 2000
         });
     },
+    //清空form
     cleanForm() {
         this.setData({
             username: "",
@@ -83,7 +122,17 @@ Page({
             }
         })
     },
-    validation() {
+    //验证器
+    validation(submitErr) {
+        if(submitErr){
+            this.setData({
+                errors:{
+                    username:" ",
+                    password:" "
+                }
+            });
+            return false;
+        }
         var { username, password } = this.data;
         var errors = {
             username: false,

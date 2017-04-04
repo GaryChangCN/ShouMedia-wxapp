@@ -1,4 +1,5 @@
 var {showToastError,fetchInfoPlus,checkHasThirdSession,fetchBindUrp}=require("../../utils/wx");
+var blockies=require("../../utils/blockies");
 Page({
     data: {
         username:"学号",
@@ -30,6 +31,7 @@ Page({
                             });
                             globalData.userInfo=userInfo;
                             var {username,name}=userInfo;
+                            _this.updateIdenticon(username);
                             _this.setData({
                                 username,
                                 name
@@ -48,11 +50,10 @@ Page({
             showToastError("网络错误");
         });
     },
-    onReady(){
-        var {globalData}=getApp();        
-        var context=require("../../utils/blockies")(
+    onReady(){     
+        var context=blockies(
             wx.createCanvasContext('avatar'),{
-                seed:globalData.userInfo.username||"iconbygary",
+                seed:"iconbygar",
                 color: '#ffffff',
                 size:8,
                 scale:7
@@ -60,4 +61,15 @@ Page({
         );
         context.draw();
     },
+    updateIdenticon(seed){
+        var context=blockies(
+            wx.createCanvasContext('avatar'),{
+                seed,
+                color: '#ffffff',
+                size:8,
+                scale:7
+            }
+        );
+        context.draw();
+    }
 })

@@ -1,0 +1,22 @@
+.curriculum-c{
+    width: 100%;
+    overflow: scroll;
+    flex-direction: column;
+}
+.curriculum{
+    width: 1050rpx;
+    display: flex;
+    flex-direction: column;
+}
+.tr{
+    width: inherit;
+    border-bottom: 1px solid lightgrey;
+    align-items: center;
+    justify-content: space-between;
+}
+.td{
+    width: 150rpx;
+    font-size: 20rpx;
+    justify-content: center;
+    align-items: center;
+}

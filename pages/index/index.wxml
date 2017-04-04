@@ -11,18 +11,18 @@
         </view>
     </view>
     <view class="function-c">
-        <view class="function yikatong" hover="true" hover-class="function-hover">
+        <navigator url="" class="function yikatong" hover="true" hover-class="function-hover">
             <i class="iconfont icon-xiaoyuanjiaofei"></i>
             <text>校园一卡通</text>
-        </view>
+        </navigator>
         <view class="function xiaoli" hover="true" hover-class="function-hover">
             <i class="iconfont icon-rili"></i>
             <text>校历</text>
         </view>
-        <view class="function kechengbiao" hover="true" hover-class="function-hover">
+        <navigator url="../function/curriculum/curriculum" class="function kechengbiao" hover="true" hover-class="function-hover">
             <i class="iconfont icon-kechengbiao"></i>
             <text>课程表</text>
-        </view>
+        </navigator>
         <view class="function chengjidan" hover="true" hover-class="function-hover">
             <i class="iconfont icon-tubiaozhizuomoban"></i>
             <text>成绩单</text>

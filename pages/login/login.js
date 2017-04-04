@@ -1,5 +1,5 @@
 var pathname = require("../../utils/url");
-var {login,showToastError}=require('../../utils/wx');
+var {showToastError}=require('../../utils/wx');
 
 Page({
     data: {
@@ -35,7 +35,7 @@ Page({
         var _this = this;
         var { username, password } = this.data;
         var thirdSession=wx.getStorageSync('3rd_session');
-        console.log("发送验证是否验证请求");
+        console.log("发送验证绑定urp请求");
         wx.request({
             url: pathname + '/api/urpLogin',
             method: "POST",
@@ -51,21 +51,18 @@ Page({
                 var { data, err } = res.data;
                 var {urpPass,bindWxApp,userInfo}=data;
                 if(err&&!data){
-                    reject("网络错误");
+                    showToastError("网络错误");
                 }else if (!urpPass) {
-                    reject("账号密码错误");
+                    showToastError("账号密码错误");
                     _this.validation(true);
                 } else {
                     if(bindWxApp){
-                        var {globalData}=getApp();
-                        globalData.bingUrp=true;
-                        globalData.userInfo.username=username;
+                        console.log("绑定urp成功，跳转到首页");
                         wx.redirectTo({
                             url: '../index/index'
                         });
                     }else{
-                        login();
-                        reject("没有微信登录授权，请重新授权");
+                        showToastError("没有微信登录授权，请重新授权");
                     }
                 }
             },

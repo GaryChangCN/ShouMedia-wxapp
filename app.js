@@ -1,43 +1,41 @@
-//app.js
+var url = require("./utils/url");
+var { login ,showToastError,fetchBindUrp} = require('./utils/wx');
+
 App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs)
-    wx.request({
-      url: 'https://weixin.shouedu.cn/api/address/%E5%88%98',
-      data: {
-      },
-      header: {
-          'content-type': 'application/json'
-      },
-      success: function(res) {
-        // console.log(res.data)
-      }
-    })
-  },
-  onShow(){
-  },
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
+    onLaunch: function() {
+        wx.checkSession({
+            success: function() {
+                var { globalData } = getApp();
+                fetchBindUrp().then(({ data, err }) => {
+                    if (err) {
+                        showToastError("网络错误");
+                    } else {
+                        var { bindUrp, username } = data;
+                        if (bindUrp) {
+                            console.log("已经绑定成功");
+                            getApp().globalData.bindUrp = true;
+                            getApp().globalData.userInfo.username = username;
+                        } else {
+                            wx.redirectTo({
+                                url: 'pages/login/login'
+                            });
+                        }
+                    }
+                });
+            },
+            fail: function() {
+                console.log("过期");
+                login(wx);
+            },
+        });
+    },
+    onHide: function() {
+
+    },
+    globalData: {
+        bindUrp: false,
+        userInfo: {
+
         }
-      })
     }
-  },
-  globalData:{
-    userInfo:null
-  }
 })

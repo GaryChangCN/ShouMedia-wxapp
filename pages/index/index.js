@@ -1,36 +1,42 @@
+var {showToastError,fetchInfoPlus}=require("../../utils/wx");
 Page({
     data: {
-
+        username:"学号",
+        name:"姓名"
     },
     toLogin() {
         wx.navigateTo({
             url: '../login/login'
         })
     },
-    onLoad: function(options) {
-        // wx.navigateTo({
-        //     url: '../login/login'
-        // })
-        console.log(options);
+    onLoad() {
+        console.log("显示主页");
+        var {globalData}=getApp();
+        var _this=this;
+        fetchInfoPlus("cache").then((data)=>{
+            wx.setStorage({
+                key: 'userInfo',
+                data: JSON.stringify(data)
+            });
+            var {username,name}=data;
+            _this.setData({
+                username,
+                name
+            });
+        }).catch((err)=>{
+            showToastError(err);
+        })
     },
-    onReady: function() {
-        //Do some when page ready.
-
+    onReady(){
+        var {globalData}=getApp();        
+        var context=require("../../utils/blockies")(
+            wx.createCanvasContext('avatar'),{
+                seed:globalData.userInfo.username||"iconbygary",
+                color: '#ffffff',
+                size:8,
+                scale:7
+            }
+        );
+        context.draw();
     },
-    onShow: function() {
-        //Do some when page show.
-
-    },
-    onHide: function() {
-        //Do some when page hide.
-
-    },
-    onUnload: function() {
-        //Do some when page unload.
-
-    },
-    onPullDownRefresh: function() {
-        //Do some when page pull down.
-
-    }
 })

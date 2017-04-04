@@ -1,5 +1,51 @@
 <view class="container">
-    <button bindtap="toLogin">
-        login page
-    </button>
+    <view class="user-c">
+        <view class="userinfo">
+            <view class="avatar-c">
+                <canvas canvas-id="avatar" class="avatar" width="60px" height="60px"/>
+            </view>
+            <view class="info-c">
+                <text>{{username}}</text>
+                <text>{{name}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="function-c">
+        <view class="function yikatong" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-xiaoyuanjiaofei"></i>
+            <text>校园一卡通</text>
+        </view>
+        <view class="function xiaoli" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-rili"></i>
+            <text>校历</text>
+        </view>
+        <view class="function kechengbiao" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-kechengbiao"></i>
+            <text>课程表</text>
+        </view>
+        <view class="function chengjidan" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-tubiaozhizuomoban"></i>
+            <text>成绩单</text>
+        </view>
+        <view class="function gerenzhongxin" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-ren"></i>
+            <text>个人中心</text>
+        </view>
+        <view class="function xiaoxitongzhi" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-xinxi"></i>
+            <text>消息通知</text>
+        </view>
+        <view class="function guanwangxinwen" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-xinwen"></i>
+            <text>官网新闻</text>
+        </view>
+        <view class="function fanganwanchengdu" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-bingzhuangtu"></i>
+            <text>方案完成度</text>
+        </view>
+        <view class="function kaoshianpai" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-kaoshi"></i>
+            <text>考试安排</text>
+        </view>
+    </view>
 </view>

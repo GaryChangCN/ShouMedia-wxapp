@@ -62,7 +62,6 @@ function checkHasThirdSession() {
 
         //这里是开发时期的问题，这里checkSession提示成功，但是并没有！！！！
         var thirdSession=getThirdSession();
-
         if(thirdSession&&checkSession){
             console.log("有thirdSession");
             return {

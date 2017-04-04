@@ -1,21 +1,22 @@
 <view class="curriculum-c">
     <view class="curriculum">
         <view class="tr th">
-            <view class="td">周一</view>
-            <view class="td">周二</view>
-            <view class="td">周三</view>
-            <view class="td">周四</view>
-            <view class="td">周五</view>
-            <view class="td">周六</view>
-            <view class="td">周日</view>
+            <view class="{{day===0?'select td':'td'}}">周一</view>
+            <view class="{{day===1?'select td':'td'}}">周二</view>
+            <view class="{{day===2?'select td':'td'}}">周三</view>
+            <view class="{{day===3?'select td':'td'}}">周四</view>
+            <view class="{{day===4?'select td':'td'}}">周五</view>
+            <view class="{{day===5?'select td':'td'}}">周六</view>
+            <view class="{{day===6?'select td':'td'}}">周日</view>
         </view>
-        <view class="table-c" wx:for="{{curriculumList}}"  wx:key="{{index}}"> 
-            <view class="tr" wx:for="{{item}}" wx:key="{{index}}">
-                <view class="td" wx:key="{{index}}">
-                    {{item}}
-                </view>
+        <view class="tr" wx:for="{{curriculumList}}" wx:for-index="i" wx:key="{{i}}">
+            <view class="td" wx:for="{{item}}" wx:for-index="j" wx:key="{{j}}">
+                {{item}}
             </view>
         </view>
     </view>
-    <view>wds</view>
+    <view class="feedback">
+        <text>课表和URP上不同</text>
+        <navigator url="">提交bug</navigator>
+    </view>
 </view>

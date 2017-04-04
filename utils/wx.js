@@ -1,4 +1,4 @@
-var url = require("./url");
+var {url} = require("./config");
 
 module.exports = {
     checkHasThirdSession,

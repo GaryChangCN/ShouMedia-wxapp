@@ -1,4 +1,4 @@
-var pathname = require("../../utils/url");
+var {url} = require("../../utils/config");
 var {showToastError}=require('../../utils/wx');
 
 Page({
@@ -37,7 +37,7 @@ Page({
         var thirdSession=wx.getStorageSync('3rd_session');
         console.log("发送验证绑定urp请求");
         wx.request({
-            url: pathname + '/api/urpLogin',
+            url: url + '/api/urpLogin',
             method: "POST",
             header: {
                 'Content-Type': 'application/x-www-form-urlencoded'

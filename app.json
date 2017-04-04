@@ -2,7 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/login/login",
-        "pages/function/curriculum/curriculum"
+        "pages/function/curriculum/curriculum",
+        "pages/function/achievement/achievement"
     ],
     "window": {
         "backgroundTextStyle": "light",

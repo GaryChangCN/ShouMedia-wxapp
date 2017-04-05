@@ -5,7 +5,31 @@ module.exports = {
     fetchBindUrp,
     showToastError,
     fetchInfoPlus,
-    fetchCurriculum
+    fetchCurriculum,
+    fetchAchievement
+}
+
+//获取成绩单
+function fetchAchievement(type="cache"){
+    return new Promise((reslove, reject) => {
+        wx.request({
+            url: `${url}/api/wxapp/fetchachievement?thirdSession=${getThirdSession()}&type=${type}`,
+            header: {
+                'Content-Type': 'application/json'
+            },
+            success: function(res) {
+                var { data, err } = res.data;
+                if (err) {
+                    reject(err.message);
+                } else {
+                    reslove(data)
+                }
+            },
+            fail() {
+                reject("网络错误");
+            }
+        });
+    });
 }
 
 //获取课程表

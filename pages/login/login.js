@@ -1,5 +1,5 @@
-var {url} = require("../../utils/config");
-var {showToastError}=require('../../utils/wx');
+var { url } = require("../../utils/config");
+var { showToastError } = require('../../utils/wx');
 
 Page({
     data: {
@@ -11,8 +11,7 @@ Page({
             password: false
         }
     },
-    onLoad(){
-    },
+    onLoad() {},
     handleChange(e) {
         var { value } = e.detail;
         var { name } = e.target.dataset;
@@ -31,13 +30,13 @@ Page({
             errors
         });
     },
-    handleSubmit(){
+    handleSubmit() {
         var _this = this;
         var { username, password } = this.data;
-        var thirdSession=wx.getStorageSync('3rd_session');
+        var thirdSession = wx.getStorageSync('3rd_session');
         console.log("发送验证绑定urp请求");
         wx.request({
-            url: url + '/api/urpLogin',
+            url: url + '/api/wxapp/urpLogin',
             method: "POST",
             header: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -49,19 +48,19 @@ Page({
             },
             success(res) {
                 var { data, err } = res.data;
-                var {urpPass,bindWxApp,userInfo}=data;
-                if(err&&!data){
+                var { urpPass, bindWxApp, userInfo } = data;
+                if (err && !data) {
                     showToastError("网络错误");
-                }else if (!urpPass) {
+                } else if (!urpPass) {
                     showToastError("账号密码错误");
                     _this.validation(true);
                 } else {
-                    if(bindWxApp){
+                    if (bindWxApp) {
                         console.log("绑定urp成功，跳转到首页");
                         wx.redirectTo({
                             url: '../index/index'
                         });
-                    }else{
+                    } else {
                         showToastError("没有微信登录授权，请重新授权");
                     }
                 }
@@ -90,11 +89,11 @@ Page({
     },
     //验证器
     validation(submitErr) {
-        if(submitErr){
+        if (submitErr) {
             this.setData({
-                errors:{
-                    username:" ",
-                    password:" "
+                errors: {
+                    username: " ",
+                    password: " "
                 }
             });
             return false;

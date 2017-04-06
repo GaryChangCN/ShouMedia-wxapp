@@ -32,7 +32,7 @@ Page({
             rotate,
             refreshDisabled: true
         });
-        if (rotate === 720 || rotate === 3600) {
+        if (rotate === 720 || rotate === 3600 || rotate === 7200) {
             this.fetch("fresh");
         } else {
             this.fetch("cache");

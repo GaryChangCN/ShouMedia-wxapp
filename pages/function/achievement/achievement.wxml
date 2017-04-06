@@ -2,11 +2,20 @@
 
 <view class="achi-c">
     <view class="achi-control">
-
+        <div class="achi-visible">
+            <view wx:if="{{!visible}}">
+                <i class="iconfont icon-xianshi"></i>
+            </view>
+            <view wx:if="{{visible}}">
+                <i class="iconfont icon-yincang"></i>
+            </view>
+        </div>
     </view>
     <view class="achi">
 
     </view>
-    <template is="refresh" data="{{refersh,refreshDisabled}}" />
+    <view bindtap="refresh">
+        <template is="refresh" data="{{refreshDisabled}}" />
+    </view>
     <template is="feedback" />
 </view>

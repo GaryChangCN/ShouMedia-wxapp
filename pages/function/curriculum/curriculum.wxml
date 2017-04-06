@@ -17,6 +17,8 @@
             </view>
         </view>
     </view>
-    <template is="refresh" data="{{refersh,refreshDisabled}}" />
+    <view bindtap="refresh">
+        <template is="refresh" data="{{refersh,refreshDisabled}}" />
+    </view>
     <template is="feedback" />
 </view>

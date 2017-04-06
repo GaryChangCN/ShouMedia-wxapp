@@ -12,7 +12,8 @@ Page({
             kcsx: "课程属性",
             cj: "成绩"
         }],
-        refreshDisabled: false
+        refreshDisabled: false,
+        visible: true
     },
     onLoad: function(options) {
         var achievementList = wx.getStorageSync('achievementList');
@@ -26,7 +27,7 @@ Page({
         }
     },
     refresh() {
-
+        console.log(1);
     },
     fetch() {
         var _this = this;

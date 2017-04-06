@@ -1,0 +1,9 @@
+.achi-c {
+    flex-direction: column;
+}
+
+.achi-control {
+    width: 100%;
+    justify-content: flex-end;
+    color: #66cccc;
+}

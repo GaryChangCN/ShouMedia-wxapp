@@ -1,0 +1,15 @@
+<template name="refresh">
+	 <button class="refresh" bindtap="{{refresh}}" disabled="{{refreshDisabled}}">
+        <i
+            animation="{{animationData}}" 
+            class="iconfont icon-shuaxin"
+        ></i>
+    </button>
+</template>
+
+<template name="feedback">
+	<view class="feedback">
+        <text>课表和URP上不同</text>
+        <navigator url="">提交bug</navigator>
+    </view>
+</template>

@@ -1,8 +1,12 @@
+<import src="../../../template/tools/tools.wxml" />
+
 <view class="achi-c">
     <view class="achi-control">
 
     </view>
     <view class="achi">
-        
+
     </view>
+    <template is="refresh" data="{{refersh,refreshDisabled}}" />
+    <template is="feedback" />
 </view>

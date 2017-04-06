@@ -1,3 +1,5 @@
+<import src="../../../template/tools/tools.wxml" />
+
 <view class="curriculum-c">
     <view class="curriculum">
         <view class="tr th">
@@ -15,14 +17,6 @@
             </view>
         </view>
     </view>
-    <button class="refresh" bindtap="refresh" disabled="{{refreshDisabled}}">
-        <i
-            animation="{{animationData}}" 
-            class="iconfont icon-shuaxin"
-        ></i>
-    </button>
-    <view class="feedback">
-        <text>课表和URP上不同</text>
-        <navigator url="">提交bug</navigator>
-    </view>
+    <template is="refresh" data="{{refersh,refreshDisabled}}" />
+    <template is="feedback" />
 </view>

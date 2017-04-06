@@ -10,7 +10,6 @@ Page({
         rotate:0
     },
     onLoad: function(options) {
-        var achievementList = wx.getStorageSync('achievementList');
         var _this=this;
         wx.getStorage({
             key: 'achievementVisible',
@@ -25,24 +24,7 @@ Page({
                 });
             }
         });
-        achievementList = JSON.parse(achievementList);
-        if (achievementList.length) {
-            var fetchAchievementTime=wx.getStorageSync('fetchAchievementTime');
-            if(!fetchAchievementTime){
-                this.fetch();
-            }else{
-                var now=new Date().getDate();
-                if(now-parseInt(fetchAchievementTime)>86400000){
-                    this.fetch();
-                }else{
-                    this.setData({
-                        achievementList
-                    });
-                }
-            }
-        } else {
-            this.fetch();
-        }
+        this.fetch();
     },
     changeVisible(e) {
         var { visible } = this.data;
@@ -88,14 +70,8 @@ Page({
                 achievementList,
                 refreshDisabled:false
             });
-            wx.setStorage({
-                key: 'achievementList',
-                data: JSON.stringify(achievementList)
-            });
-            wx.setStorage({
-                key: 'fetchAchievementTime',
-                data: new Date().getTime().toString()
-            });
-        })
+        }).catch((err)=>{
+            showToastError(err);
+        });
     }
 })

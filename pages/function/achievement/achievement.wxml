@@ -2,7 +2,7 @@
 
 <view class="achi-c">
     <view class="achi-control">
-        <view class="achi-visible">
+        <view class="achi-visible" wx:if="{{achievementList.length}}">
             <view bindtap="changeVisible">
                 <i class="iconfont icon-{{visible?'yincang':'xianshi'}}"
                 ></i>

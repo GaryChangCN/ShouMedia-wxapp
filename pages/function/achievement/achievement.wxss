@@ -6,4 +6,68 @@
     width: 100%;
     justify-content: flex-end;
     color: #66cccc;
+    height:80rpx;
+    align-items: center;
+}
+
+.achi-control>view {
+    margin-right: 20rpx;
+}
+
+.achi-control .iconfont {
+    font-size: 50rpx;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.achi-control .icon-yincang{
+    font-size: 55rpx;
+}
+
+.achi{
+    min-height: 1100rpx;
+    flex-direction: column;
+    width: 100%;
+}
+.achi-item{
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 4rpx solid #66cccc;
+}
+.achi-item:first-child{
+    border-top: 4rpx solid #66cccc;
+}
+.achi-item text{
+    width: 50%;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    font-size: 30rpx;
+    font-weight: 100;
+    color: #464646;
+}
+.achi-item-header{
+    padding-left: 30rpx;
+    width: 100%;
+    justify-content: space-between;
+    height: 70rpx;
+    align-items:center;
+    border-bottom:1px solid rgba(100, 100, 100, 0.2);
+}
+.achi-item-header>text{
+    font-size: 40rpx;
+    color: #66cccc;
+}
+.achi-item-panel{
+    flex-direction: column;
+    background-color: #f6f8f9;
+    padding: 30rpx 0;
+}
+.achi-item-panel>view{
+    justify-content: space-between;
+    padding: 0 30rpx;
+    height: 50rpx;
+    align-items: center;
 }

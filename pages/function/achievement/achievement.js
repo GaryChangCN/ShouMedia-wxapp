@@ -3,17 +3,9 @@ var { showToastError, fetchAchievement } = require("../../../utils/wx");
 Page({
     data: {
         //目前没有成绩模拟下
-        achievementList: [{
-            kch: "课程号",
-            kxh: "课序号",
-            kcm: "课程名",
-            kcywm: "课程英文名",
-            xf: "学分",
-            kcsx: "课程属性",
-            cj: "成绩"
-        }],
+        achievementList: [],
         refreshDisabled: false,
-        visible: true
+        visi: true
     },
     onLoad: function(options) {
         var achievementList = wx.getStorageSync('achievementList');
@@ -25,6 +17,10 @@ Page({
         } else {
             this.fetch();
         }
+    },
+    changeVisible(e) {
+        var { visi } = this.data;
+        this.setData({ visi:!visi });
     },
     refresh() {
         console.log(1);

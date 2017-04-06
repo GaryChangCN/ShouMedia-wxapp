@@ -2,17 +2,51 @@
 
 <view class="achi-c">
     <view class="achi-control">
-        <div class="achi-visible">
-            <view wx:if="{{!visible}}">
-                <i class="iconfont icon-xianshi"></i>
+        <view class="achi-visible">
+            <view bindtap="changeVisible">
+                <i class="iconfont icon-{{visi?'yincang':'xianshi'}}"
+                ></i>
             </view>
-            <view wx:if="{{visible}}">
-                <i class="iconfont icon-yincang"></i>
-            </view>
-        </div>
+        </view>
     </view>
     <view class="achi">
-
+        <text class="placeholderer" wx:if="{{!achievementList.length}}">当前没有成绩</text>
+        <view class="achi-item" wx:for="{{achievementList}}" wx:for-index="i" wx:key="{{i}}">
+            <view class="achi-item-header">
+                <text>{{item.kcm}}</text>
+                <text wx:if="{{visi}}">{{item.cj}}</text>
+            </view>
+            <view class="achi-item-panel">
+                <view>
+                    <text>课程名</text>
+                    <text wx:if="{{visi}}">{{item.kcm}}</text>
+                </view>
+                <view>
+                    <text>课程号</text>
+                    <text wx:if="{{visi}}">{{item.kch}}</text>
+                </view>
+                <view>
+                    <text>课序号</text>
+                    <text wx:if="{{visi}}">{{item.kxh}}</text>
+                </view>
+                <view>
+                    <text>课程英文名</text>
+                    <text wx:if="{{visi}}">{{item.kcywm}}</text>
+                </view>
+                <view>
+                    <text>课程属性</text>
+                    <text wx:if="{{visi}}">{{item.kcsx}}</text>
+                </view>
+                <view>
+                    <text>学分</text>
+                    <text wx:if="{{visi}}">{{item.xf}}</text>
+                </view>
+                <view>
+                    <text>成绩</text>
+                    <text wx:if="{{visi}}">{{item.cj}}</text>
+                </view>
+            </view>
+        </view>
     </view>
     <view bindtap="refresh">
         <template is="refresh" data="{{refreshDisabled}}" />

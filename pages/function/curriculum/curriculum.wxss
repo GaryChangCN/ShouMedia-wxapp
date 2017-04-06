@@ -1,27 +1,32 @@
-.curriculum-c{
+.curriculum-c {
     width: 100%;
     overflow: scroll;
     flex-direction: column;
 }
-.curriculum{
+
+.curriculum {
     width: 1050rpx;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    min-height: 500rpx;
 }
-.th{
+
+.th {
     border-bottom: 1px solid lightgrey;
     top: 0;
     height: 70rpx;
     padding: 0;
     background-color: #fff;
 }
-.tr{
+
+.tr {
     width: inherit;
     align-items: center;
     justify-content: space-between;
 }
-.td{
+
+.td {
     width: 150rpx;
     min-height: 150rpx;
     padding: 30rpx;
@@ -30,20 +35,24 @@
     align-items: center;
     color: #2b6071;
 }
-.tr:nth-child(even){
+
+.tr:nth-child(even) {
     background-color: #aae7e7;
 }
-.th>.td{
+
+.th>.td {
     padding: 0;
     min-height: initial;
     height: inherit;
 }
-.th>.select{
+
+.th>.select {
     border-style: solid;
     border-color: #aae7e7;
     border-width: 0 1rpx 0 1rpx;
 }
-.feedback{
+
+.feedback {
     width: 100%;
     height: 70rpx;
     border-top: 1px solid #66cccc;
@@ -52,10 +61,32 @@
     font-size: 20rpx;
     color: #66cccc;
 }
-.feedback>text{
+
+.feedback>text {
     margin-right: 10rpx;
 }
-.feedback>navigator{
+
+.feedback>navigator {
     margin-left: 10rpx;
     text-decoration: underline;
+}
+
+.refresh {
+    position: fixed;
+    right: 20rpx;
+    bottom: 20rpx;
+    color: #2b6071;
+    width: 80rpx;
+    height: 80rpx;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25rpx;
+    background: #fff;
+    opacity: 0.5;
+    display: flex;
+}
+
+.refresh>.iconfont {
+    font-size: 50rpx;
+    opacity: 1;
 }

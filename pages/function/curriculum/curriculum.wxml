@@ -15,6 +15,12 @@
             </view>
         </view>
     </view>
+    <button class="refresh" bindtap="refresh" disabled="{{refreshDisabled}}">
+        <i
+            animation="{{animationData}}" 
+            class="iconfont icon-shuaxin"
+        ></i>
+    </button>
     <view class="feedback">
         <text>课表和URP上不同</text>
         <navigator url="">提交bug</navigator>

@@ -42,7 +42,7 @@ Page({
         var _this = this;
         this.setData({
             refreshDisabled: true
-        })
+        });
         fetchCurriculum(type).then((curriculumList) => {
             _this.setData({
                 curriculumList,

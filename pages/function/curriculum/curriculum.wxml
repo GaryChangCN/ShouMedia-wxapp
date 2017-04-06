@@ -19,7 +19,7 @@
         </view>
     </view>
     <view bindtap="refresh">
-        <template is="refresh" data="{{refersh,refreshDisabled}}" />
+        <template is="refresh" data="{{animationData,refreshDisabled}}" />
     </view>
     <template is="feedback" />
 </view>

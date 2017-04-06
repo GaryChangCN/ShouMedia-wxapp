@@ -4,7 +4,7 @@
     <view class="achi-control">
         <view class="achi-visible">
             <view bindtap="changeVisible">
-                <i class="iconfont icon-{{visi?'yincang':'xianshi'}}"
+                <i class="iconfont icon-{{visible?'yincang':'xianshi'}}"
                 ></i>
             </view>
         </view>
@@ -14,42 +14,38 @@
         <view class="achi-item" wx:for="{{achievementList}}" wx:for-index="i" wx:key="{{i}}">
             <view class="achi-item-header">
                 <text>{{item.kcm}}</text>
-                <text wx:if="{{visi}}">{{item.cj}}</text>
+                <text>{{visible?item.cj:'...'}}</text>
             </view>
             <view class="achi-item-panel">
                 <view>
                     <text>课程名</text>
-                    <text wx:if="{{visi}}">{{item.kcm}}</text>
+                    <text>{{item.kcm}}</text>
                 </view>
                 <view>
                     <text>课程号</text>
-                    <text wx:if="{{visi}}">{{item.kch}}</text>
+                    <text>{{item.kch}}</text>
                 </view>
                 <view>
                     <text>课序号</text>
-                    <text wx:if="{{visi}}">{{item.kxh}}</text>
-                </view>
-                <view>
-                    <text>课程英文名</text>
-                    <text wx:if="{{visi}}">{{item.kcywm}}</text>
+                    <text>{{item.kxh}}</text>
                 </view>
                 <view>
                     <text>课程属性</text>
-                    <text wx:if="{{visi}}">{{item.kcsx}}</text>
+                    <text>{{item.kcsx}}</text>
                 </view>
                 <view>
                     <text>学分</text>
-                    <text wx:if="{{visi}}">{{item.xf}}</text>
+                    <text>{{item.xf}}</text>
                 </view>
                 <view>
                     <text>成绩</text>
-                    <text wx:if="{{visi}}">{{item.cj}}</text>
+                    <text>{{visible?item.cj:'...'}}</text>
                 </view>
             </view>
         </view>
     </view>
     <view bindtap="refresh">
-        <template is="refresh" data="{{refreshDisabled}}" />
+        <template is="refresh" data="{{animationData,refreshDisabled}}" />
     </view>
     <template is="feedback" />
 </view>

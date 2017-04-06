@@ -11,6 +11,7 @@
             <view class="{{day===5?'select td':'td'}}">周六</view>
             <view class="{{day===6?'select td':'td'}}">周日</view>
         </view>
+        <text class="placeholderer" wx:if="{{!curriculumList.length}}">当前没有课表</text>
         <view class="tr" wx:for="{{curriculumList}}" wx:for-index="i" wx:key="{{i}}">
             <view class="td" wx:for="{{item}}" wx:for-index="j" wx:key="{{j}}">
                 {{item}}

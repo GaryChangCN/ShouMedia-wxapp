@@ -1,0 +1,17 @@
+<text class="placeholderer" wx:if="{{!data}}">获取中...</text>
+<view class="news-c">
+	<view class="title">
+		{{data.title}}
+	</view>
+	<view class="meta">
+		{{data.meta}}
+	</view>
+	<view class="content">
+		<view wx:for="{{data.list}}" wx:key="{{index}}">
+			<view wx:if="{{item.p}}">
+				{{item.p}}
+			</view>
+			<image wx:if="{{item.img}}" src="{{item.img}}" mode="aspectFit"/>
+		</view>
+	</view>
+</view>

@@ -7,9 +7,35 @@ module.exports = {
     fetchInfoPlus,
     fetchCurriculum,
     fetchAchievement,
-    fetchNewsList
+    fetchNewsList,
+    fetchNewsDetail
 }
 
+function fetchNewsDetail(path){
+    return new Promise((reslove,reject)=>{
+        wx.request({
+            url:`${url}/api/getnewsdetail`,
+            header:{
+                'Content-Type':'x-www-form-urlencoded'
+            },
+            data:{
+                url:path
+            },
+            success(res) {
+                var {data,err}=res.data;
+                if(err){
+                    reject(err.message);
+                }else{
+                    reslove(data);
+                }
+            },
+            fail(){
+                reject("网络错误");
+            }
+        });
+    });
+}
+// 获取新闻流列表
 function fetchNewsList(type,pn=1){
     return new Promise((reslove,reject)=>{
         wx.request({

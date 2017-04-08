@@ -11,7 +11,7 @@
     <scroll-view scroll-y="true" class="newslist" bindscrolltolower="fetchMore">
         <view class="news-list">
             <text class="placeholderer" wx:if="{{!list[tab].length}}">当前没有新闻</text>
-            <navigator url="../curriculum/curriculum" class="news-item" wx:for="{{list[tab]}}" hover-class="news-item-hover" wx:key="{{index}}">
+            <navigator url="../newsDetail/newsDetail?url={{item.href}}" class="news-item" wx:for="{{list[tab]}}" hover-class="news-item-hover" wx:key="{{index}}">
                 <view class="title">
                     {{item.title}}
                 </view>

@@ -1,0 +1,32 @@
+.news-c{
+	width: 100%;
+	flex-direction: column;
+}
+.news-c>.title{
+	width: 100%;
+	font-size: 35rpx;
+	align-items: center;
+	padding: 0 50rpx;
+	margin-top: 30rpx;
+	justify-content: center;
+}
+.news-c>.meta{
+	margin-top: 20rpx;
+	width: 100%;
+	font-size: 20rpx;
+	justify-content: center;
+}
+.news-c>.content{
+	width: 100%;
+	margin-top: 20rpx;
+	padding: 0 20rpx;
+	flex-direction: column;
+	align-items: center;
+}
+.news-c>.content view{
+	width: 100%;
+	margin-bottom: 10rpx;
+	font-size: 25rpx;
+	text-indent: 25rpx;
+	justify-content: center;
+}

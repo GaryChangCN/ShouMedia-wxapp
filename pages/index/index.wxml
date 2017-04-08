@@ -37,7 +37,7 @@
         </view>
         <navigator url="../function/newsList/newsList" class="function guanwangxinwen" hover="true" hover-class="function-hover">
             <i class="iconfont icon-xinwen"></i>
-            <text>新闻流</text>
+            <text>新闻公告</text>
         </navigator>
         <view class="function fanganwanchengdu" hover="true" hover-class="function-hover">
             <i class="iconfont icon-bingzhuangtu"></i>

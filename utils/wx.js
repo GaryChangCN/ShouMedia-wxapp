@@ -2,6 +2,7 @@ var {url} = require("./config");
 
 module.exports = {
     checkHasThirdSession,
+    checkBindUrp,
     fetchBindUrp,
     showToastError,
     fetchInfoPlus,
@@ -10,7 +11,7 @@ module.exports = {
     fetchNewsList,
     fetchNewsDetail
 }
-
+//获取新闻详情
 function fetchNewsDetail(path){
     return new Promise((reslove,reject)=>{
         wx.request({
@@ -130,6 +131,11 @@ function fetchInfoPlus(type = "cache") {
     })
 }
 
+//check 是否绑定了urp
+function checkBindUrp(){
+    var {bindUrp}=getApp().globalData;
+    return bindUrp;
+}
 
 //获取微信登录授权以及  保存   3rd_session
 //首先献策否有thirdSession 如果有返回true，没有的话会重新发起获取getThirdSession请求

@@ -1,4 +1,4 @@
-var { showToastError, fetchAchievement } = require("../../../utils/wx");
+var { showToastError, fetchAchievement ,checkBindUrp} = require("../../../utils/wx");
 
 Page({
     data: {
@@ -10,21 +10,27 @@ Page({
         rotate:0
     },
     onLoad: function(options) {
-        var _this=this;
-        wx.getStorage({
-            key: 'achievementVisible',
-            success({data}){
-                _this.setData({
-                    visible:data==="true"?true:false
-                });
-            },
-            fail() {
-                _this.setData({
-                    visible:true
-                });
-            }
-        });
-        this.fetch();
+        if(checkBindUrp()){
+            var _this=this;
+            wx.getStorage({
+                key: 'achievementVisible',
+                success({data}){
+                    _this.setData({
+                        visible:data==="true"?true:false
+                    });
+                },
+                fail() {
+                    _this.setData({
+                        visible:true
+                    });
+                }
+            });
+            this.fetch();
+        }else{
+            wx.redirectTo({
+                url: '../../login/login'
+            });
+        }
     },
     changeVisible(e) {
         var { visible } = this.data;

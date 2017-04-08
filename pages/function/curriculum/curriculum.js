@@ -1,4 +1,4 @@
-var { showToastError, fetchCurriculum } = require("../../../utils/wx");
+var { showToastError, fetchCurriculum ,checkBindUrp} = require("../../../utils/wx");
 
 Page({
     data: {
@@ -18,7 +18,13 @@ Page({
         });
     },
     onLoad: function(options) {
-        this.fetch("cache");
+        if(checkBindUrp()){
+            this.fetch("cache");
+        }else{
+            wx.redirectTo({
+                url: '../../login/login'
+            });
+        }
     },
     refresh() {
         var animation = wx.createAnimation({

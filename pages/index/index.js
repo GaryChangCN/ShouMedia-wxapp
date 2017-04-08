@@ -3,7 +3,8 @@ var blockies=require("../../utils/blockies");
 Page({
     data: {
         username:"学号",
-        name:"姓名"
+        name:"姓名",
+        bindUrp:true
     },
     toLogin() {
         wx.navigateTo({
@@ -17,13 +18,14 @@ Page({
         checkHasThirdSession().then(({hasThirdSession,err})=>{
             if(err){
                 console.log("储存登录信息失败");
-                showToastError("储存登录信息失败")
+                showToastError("储存登录信息失败");
             }else{
                 console.log("已有储存的thirdSession");
                 return fetchBindUrp().then(({bindUrp})=>{
                     if(bindUrp){
                         console.log("已经绑定urp");
                         globalData.bindUrp=true;
+                        _this.setData({bindUrp:true});
                         return fetchInfoPlus("cache").then((userInfo)=>{
                             wx.setStorage({
                                 key: 'userInfo',
@@ -38,10 +40,11 @@ Page({
                             });
                         });
                     }else{
-                        console.log("未绑定urp，跳转到绑定页面");
-                        wx.redirectTo({
-                            url: '../login/login'
-                        });
+                        console.log("未绑定urp，部分功能不可用");
+                        _this.setData({bindUrp:false})
+                        // wx.redirectTo({
+                        //     url: '../login/login'
+                        // });
                     }
                 });
             }

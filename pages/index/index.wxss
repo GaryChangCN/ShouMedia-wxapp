@@ -7,6 +7,28 @@
     background-color: #66cccc;
     flex-direction: column;
 }
+.notbindurp{
+    width: 100%;
+    height: 60rpx;
+    justify-content: space-between;
+    background: #66cccc;
+    align-items: center;
+    padding: 0 50rpx;
+}
+.notbindurp>.a{
+    font-size: 25rpx;
+    color: #ffffff;
+}
+.notbindurp>.b{
+    font-size: 20rpx;
+    color: #ffffff;
+    width: 120rpx;
+    height: 34rpx;
+    border-radius: 15rpx;
+    border: 1px solid #fff;
+    justify-content: center;
+    align-items: center;
+}
 .userinfo{
     width: 100%;
     height: 400rpx;
@@ -41,7 +63,6 @@
 .function-c{
     width: 100%;
     flex-wrap: wrap;
-    /*border-bottom: 1px solid lightgrey;*/
 }
 .function{
     width: 250rpx;
@@ -51,6 +72,9 @@
     border-width: 0px;
     color: #66cccc;
     flex-direction: column;
+}
+.unbindurp{
+    color: darkgrey;
 }
 .function>i{
     font-size: 80rpx;
@@ -72,7 +96,7 @@
 .function-c>.gerenzhongxin{
     order: 5;
 }
-.function-c>.xiaoxitongzhi{
+.function-c>.tongxunlu{
     order: 6;
 }
 .function-c>.guanwangxinwen{

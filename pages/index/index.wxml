@@ -2,7 +2,7 @@
     <view class="user-c">
         <view class="userinfo">
             <view class="avatar-c">
-                <canvas canvas-id="avatar" class="avatar" width="60px" height="60px"/>
+                <canvas canvas-id="avatar" class="avatar" width="60px" height="60px" />
             </view>
             <view class="info-c">
                 <text>{{username}}</text>
@@ -35,10 +35,10 @@
             <i class="iconfont icon-tubiaozhizuomoban"></i>
             <text>成绩单</text>
         </navigator>
-        <view class="function gerenzhongxin  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover ">
+        <navigator url="../personal/index/index" class="function gerenzhongxin  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover ">
             <i class="iconfont icon-ren"></i>
             <text>个人中心</text>
-        </view>
+        </navigator>
         <navigator url="../function/address/address" class="function tongxunlu" hover="true" hover-class="function-hover">
             <i class="iconfont icon-3333333"></i>
             <text>通讯录</text>
@@ -51,7 +51,7 @@
             <i class="iconfont icon-bingzhuangtu"></i>
             <text>方案完成度</text>
         </view>
-        <view class="function kaoshianpai  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <view class="function kaoshianpai {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-kaoshi"></i>
             <text>考试安排</text>
         </view>

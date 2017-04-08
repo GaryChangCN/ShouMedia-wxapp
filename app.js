@@ -6,6 +6,7 @@ App({
         bindUrp: false,
         userInfo: {
 
-        }
+        },
+        avatarSeed:""
     }
 })

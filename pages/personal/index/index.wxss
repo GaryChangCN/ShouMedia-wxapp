@@ -1,0 +1,55 @@
+.personal-c{
+	width: 100%;
+	flex-direction: column;
+	background: #eee;
+}
+.info-c{
+	width: 100%;
+	height: 200rpx;
+	background: #66cccc;
+	align-items: center;
+	justify-content: space-around;
+}
+.avatar>canvas{
+	width: 120rpx;
+	height: 120rpx;
+}
+.info-c>.name{
+	color: #fff;
+}
+.item-coll{
+	margin-top: 30rpx;
+	flex-direction: column;
+	width: 100%;
+	background: #fff;
+}
+.item-coll>.item{
+	height: 90rpx;
+	align-items: center;
+	padding: 0 20rpx;
+}
+.item-coll>view{
+	justify-content: center;
+	align-items: center;
+	height: inherit
+}
+.item-coll .a{
+	width: 150rpx;
+	font-size: 25rpx;
+}
+.item-coll .b{
+	width: 400rpx;
+}
+.item-coll .b input{
+	font-size: 25rpx;
+	border-bottom: 1px solid lightgrey;
+	color: lightgrey;
+	font-size: 25rpx;
+}
+.item-coll .active{
+	color: #66cccc !important;
+	border-color: #66cccc !important;
+}
+.item-coll .c{
+	width: 150rpx;
+}

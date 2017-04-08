@@ -10,12 +10,44 @@ module.exports = {
     fetchAchievement,
     fetchNewsList,
     fetchNewsDetail,
-    searchAddress
+    searchAddress,
+    fetchWx,
+    updateAvatar
+}
+
+//更新头像seed
+
+function updateAvatar(avatar){
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/wxapp/updatewx`,
+            method:"PUT",
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data:{
+                type:"avatar",
+                data:avatar,
+                thirdSession:getThirdSession()
+            },
+            success(res) {
+                var { data, err } = res.data;
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            },
+            fail() {
+                reject("网络错误");
+            }
+        });
+    });
 }
 
 //搜索通讯录
 function searchAddress(value) {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/address/${value}`,
             success(res) {
@@ -23,7 +55,7 @@ function searchAddress(value) {
                 if (err) {
                     reject(err);
                 } else {
-                    reslove(data);
+                    resolve(data);
                 }
             },
             fail() {
@@ -34,7 +66,7 @@ function searchAddress(value) {
 }
 //获取新闻详情
 function fetchNewsDetail(path) {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/getnewsdetail`,
             header: {
@@ -48,7 +80,7 @@ function fetchNewsDetail(path) {
                 if (err) {
                     reject(err.message);
                 } else {
-                    reslove(data);
+                    resolve(data);
                 }
             },
             fail() {
@@ -59,7 +91,7 @@ function fetchNewsDetail(path) {
 }
 // 获取新闻流列表
 function fetchNewsList(type, pn = 1) {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/getnewslist`,
             header: {
@@ -74,7 +106,7 @@ function fetchNewsList(type, pn = 1) {
                 if (err) {
                     reject(err.message);
                 } else {
-                    reslove(data);
+                    resolve(data);
                 }
             },
             fail() {
@@ -86,7 +118,7 @@ function fetchNewsList(type, pn = 1) {
 
 //获取成绩单
 function fetchAchievement(type = "cache") {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/wxapp/fetchachievement?thirdSession=${getThirdSession()}&type=${type}`,
             header: {
@@ -97,7 +129,7 @@ function fetchAchievement(type = "cache") {
                 if (err) {
                     reject(err.message);
                 } else {
-                    reslove(data)
+                    resolve(data)
                 }
             },
             fail() {
@@ -109,18 +141,15 @@ function fetchAchievement(type = "cache") {
 
 //获取课程表
 function fetchCurriculum(type = "cache") {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/wxapp/fetchcurriculum?thirdSession=${getThirdSession()}&type=${type}`,
-            header: {
-                'Content-Type': 'application/json'
-            },
             success: function(res) {
                 var { data, err } = res.data;
                 if (err) {
                     reject(err.message);
                 } else {
-                    reslove(data)
+                    resolve(data)
                 }
             },
             fail() {
@@ -130,26 +159,44 @@ function fetchCurriculum(type = "cache") {
     });
 }
 
-//获取详细信息
-function fetchInfoPlus(type = "cache") {
-    return new Promise((reslove, reject) => {
+//获取小程序设置
+
+function fetchWx(type){
+    return new Promise((resolve,reject)=>{
         wx.request({
-            url: `${url}/api/wxapp/fetchinfoplus?thirdSession=${getThirdSession()}&type=${type}`,
-            header: {
-                'Content-Type': 'application/json'
-            },
+            url: `${url}/api/wxapp/fetchwx?thirdSession=${getThirdSession()}&type=${type}`,
             success: function(res) {
                 var { data, err } = res.data;
                 if (err) {
                     reject(err.message);
                 } else {
-                    reslove(data)
+                    resolve(data)
                 }
             },
             fail() {
                 reject("网络错误");
             }
         })
+    })
+}
+
+//获取详细信息
+function fetchInfoPlus(type = "cache") {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: `${url}/api/wxapp/fetchinfoplus?thirdSession=${getThirdSession()}&type=${type}`,
+            success: function(res) {
+                var { data, err } = res.data;
+                if (err) {
+                    reject(err.message);
+                } else {
+                    resolve(data)
+                }
+            },
+            fail() {
+                reject("网络错误");
+            }
+        });
     })
 }
 
@@ -177,18 +224,18 @@ function checkHasThirdSession() {
                 if (err) {
                     throw err;
                 } else {
-                    return new Promise((reslove, reject) => {
+                    return new Promise((resolve, reject) => {
                         wx.setStorage({
                             key: '3rd_session',
                             data: thirdSession,
                             success() {
                                 console.log("获取thirdSession成功，已存贮");
-                                reslove({
+                                resolve({
                                     hasThirdSession: true
                                 });
                             },
                             fail() {
-                                reslove({
+                                resolve({
                                     err: true
                                 });
                             }
@@ -202,7 +249,7 @@ function checkHasThirdSession() {
 
 //从服务区获取thirdSession
 function fetchThirdSession() {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.login({
             success: function({ code, errMsg }) {
                 if (code) {
@@ -218,10 +265,10 @@ function fetchThirdSession() {
                         success: function(res) {
                             var { data, err } = res.data;
                             if (err) {
-                                reslove({ err: true });
+                                resolve({ err: true });
                             } else {
                                 var { thirdSession } = data;
-                                reslove({ thirdSession });
+                                resolve({ thirdSession });
                             }
                         }
                     });
@@ -235,15 +282,15 @@ function fetchThirdSession() {
 
 //微信 checksession方法
 function checkSession() {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.checkSession({
             success: function() {
-                reslove({
+                resolve({
                     checkSession: true
                 });
             },
             fail: function() {
-                reslove({
+                resolve({
                     checkSession: false
                 });
             },
@@ -254,7 +301,7 @@ function checkSession() {
 //检查是否绑定了urp
 function fetchBindUrp() {
     var thirdSession = getThirdSession();
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
         wx.request({
             url: `${url}/api/wxapp/fetchbindurp?thirdSession=${thirdSession}`,
             data: {
@@ -270,7 +317,7 @@ function fetchBindUrp() {
                 if (err) {
                     reject("网络错误");
                 } else {
-                    reslove(data);
+                    resolve(data);
                     console.log("获取绑定urp状态信息成功");
                     console.log(data);
                 }

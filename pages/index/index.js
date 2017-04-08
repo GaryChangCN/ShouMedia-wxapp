@@ -1,4 +1,4 @@
-var {showToastError,fetchInfoPlus,checkHasThirdSession,fetchBindUrp}=require("../../utils/wx");
+var {showToastError,fetchInfoPlus,checkHasThirdSession,fetchBindUrp,fetchWx}=require("../../utils/wx");
 var blockies=require("../../utils/blockies");
 Page({
     data: {
@@ -33,18 +33,19 @@ Page({
                             });
                             globalData.userInfo=userInfo;
                             var {username,name}=userInfo;
-                            _this.updateIdenticon(username);
                             _this.setData({
                                 username,
                                 name
                             });
+                            return fetchWx("avatar").then(({avatar})=>{
+                                avatar=avatar||username;
+                                getApp().globalData.avatarSeed=avatar;
+                                _this.updateIdenticon(avatar);
+                            });
                         });
                     }else{
                         console.log("未绑定urp，部分功能不可用");
-                        _this.setData({bindUrp:false})
-                        // wx.redirectTo({
-                        //     url: '../login/login'
-                        // });
+                        _this.setData({bindUrp:false});
                     }
                 });
             }
@@ -53,16 +54,12 @@ Page({
             showToastError("网络错误");
         });
     },
-    onReady(){     
-        var context=blockies(
-            wx.createCanvasContext('avatar'),{
-                seed:"iconbygar",
-                color: '#ffffff',
-                size:8,
-                scale:7
-            }
-        );
-        context.draw();
+    onShow(){
+        var {avatarSeed}=getApp().globalData;
+        this.updateIdenticon(avatarSeed);        
+    },
+    onReady(){
+        this.updateIdenticon("iconbygar");   
     },
     updateIdenticon(seed){
         var context=blockies(

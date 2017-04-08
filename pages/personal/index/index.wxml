@@ -1,0 +1,26 @@
+<view class="personal-c">
+	<view class="info-c">
+		<view class="avatar">
+			<canvas canvas-id="avatarPersonal" class="avatar" width="60px" height="60px" />
+		</view>
+		<view class="name">{{userInfo.name}}</view>
+	</view>
+	<view class="item-coll">
+		<view class="change-avatar item">
+			<view class="a">
+				<text>修改头像</text>
+			</view>
+			<view class="b">
+				<input value="{{seedValue}}" bindinput="handleChangeSeed" hidden="{{seedDisabled}}" class="active" disabled="{{seedDisabled}}"/>
+			</view>
+			<view class="c">
+				<switch color="#66cccc" bindchange="switchChangeSeed"/>
+			</view>
+		</view>
+	</view>
+	<view class="item-coll">
+		<view>
+			213456231345
+		</view>
+	</view>
+</view>

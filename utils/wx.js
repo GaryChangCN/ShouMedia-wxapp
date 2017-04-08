@@ -6,7 +6,33 @@ module.exports = {
     showToastError,
     fetchInfoPlus,
     fetchCurriculum,
-    fetchAchievement
+    fetchAchievement,
+    fetchNewsList
+}
+
+function fetchNewsList(type,pn=1){
+    return new Promise((reslove,reject)=>{
+        wx.request({
+            url: `${url}/api/getnewslist`,
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data:{
+                type,pn
+            },
+            success(res) {
+                var {data,err}=res.data;
+                if(err){
+                    reject(err.message);
+                }else{
+                    reslove(data);
+                }
+            },
+            fail(){
+                reject("网络错误");
+            }
+        });
+    });
 }
 
 //获取成绩单

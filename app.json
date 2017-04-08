@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/login/login",
         "pages/function/curriculum/curriculum",
-        "pages/function/achievement/achievement"
+        "pages/function/achievement/achievement",
+        "pages/function/newsList/newsList"
     ],
     "window": {
         "backgroundTextStyle": "light",

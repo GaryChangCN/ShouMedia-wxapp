@@ -1,0 +1,11 @@
+<view class="newslist-c">
+    <scroll-view scroll-x="true" class="newslist-title">
+        <view class="newslist-title-c">
+            <view class="{{tab=='tzgg'?'selected':''}}">通知公告</view>
+            <view class="{{tab=='yw'?'selected':''}}">要闻</view>
+            <view class="{{tab=='mtjj'?'selected':''}}">媒体聚焦</view>
+            <view class="{{tab=='xsqy'?'selected':''}}">学术前沿</view>
+            <view class="{{tab=='xsjz'?'selected':''}}">学术讲座</view>
+        </view>
+    </scroll-view>
+</view>

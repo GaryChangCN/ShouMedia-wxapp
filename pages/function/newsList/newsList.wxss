@@ -1,0 +1,23 @@
+.newslist-c{
+    width: 100%;
+    flex-direction: column;
+}
+.newslist-title{
+    height: 70rpx;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+}
+.newslist-title-c{
+    width: 850rpx;
+    height: inherit;
+}
+.newslist-title-c>view{
+    height: inherit;
+    font-size: 25rpx;
+    align-items: center;
+    width: 170rpx;
+    justify-content: center;
+}
+.newslist-title-c>.selected{
+    color: #66cccc;
+}

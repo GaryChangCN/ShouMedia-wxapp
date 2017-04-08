@@ -35,10 +35,10 @@
             <i class="iconfont icon-xinxi"></i>
             <text>消息通知</text>
         </view>
-        <view class="function guanwangxinwen" hover="true" hover-class="function-hover">
+        <navigator url="../function/newsList/newsList" class="function guanwangxinwen" hover="true" hover-class="function-hover">
             <i class="iconfont icon-xinwen"></i>
-            <text>官网新闻</text>
-        </view>
+            <text>新闻流</text>
+        </navigator>
         <view class="function fanganwanchengdu" hover="true" hover-class="function-hover">
             <i class="iconfont icon-bingzhuangtu"></i>
             <text>方案完成度</text>

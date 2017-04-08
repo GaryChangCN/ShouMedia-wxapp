@@ -21,3 +21,37 @@
 .newslist-title-c>.selected{
     color: #66cccc;
 }
+.newslist{
+    width: 100%;
+    height: 1180rpx;
+}
+.news-list{
+    flex-direction: column;
+}
+.news-item{
+    width: 100%;
+    justify-content: space-between;
+    height: 140rpx;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+.news-item-hover{
+    background-color: #eee;
+}
+.news-item>view{
+    font-size: 20rpx;
+    display: flex;
+    height: 100rpx;
+    align-items: center;
+}
+.news-item>.title{
+    width: 500rpx;
+    font-size: 25rpx;
+    padding-left: 30rpx;
+}
+.news-item>.time{
+    width: 150rpx;
+    justify-content: flex-end;
+    color: #66cccc;
+    padding-right: 30rpx;
+}

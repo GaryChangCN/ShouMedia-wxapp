@@ -1,11 +1,24 @@
 <view class="newslist-c">
     <scroll-view scroll-x="true" class="newslist-title">
         <view class="newslist-title-c">
-            <view class="{{tab=='tzgg'?'selected':''}}">通知公告</view>
-            <view class="{{tab=='yw'?'selected':''}}">要闻</view>
-            <view class="{{tab=='mtjj'?'selected':''}}">媒体聚焦</view>
-            <view class="{{tab=='xsqy'?'selected':''}}">学术前沿</view>
-            <view class="{{tab=='xsjz'?'selected':''}}">学术讲座</view>
+            <view data-type="tzgg" bindtap="changeTab" class="{{tab=='tzgg'?'selected':''}}">通知公告</view>
+            <view data-type="yw" bindtap="changeTab" class="{{tab=='yw'?'selected':''}}">要闻</view>
+            <view data-type="mtjj" bindtap="changeTab" class="{{tab=='mtjj'?'selected':''}}">媒体聚焦</view>
+            <view data-type="xsqy" bindtap="changeTab" class="{{tab=='xsqy'?'selected':''}}">学术前沿</view>
+            <view data-type="xsjz" bindtap="changeTab" class="{{tab=='xsjz'?'selected':''}}">学术讲座</view>
+        </view>
+    </scroll-view>
+    <scroll-view scroll-y="true" class="newslist" bindscrolltolower="fetchMore">
+        <view class="news-list">
+            <text class="placeholderer" wx:if="{{!list[tab].length}}">当前没有新闻</text>
+            <navigator url="../curriculum/curriculum" class="news-item" wx:for="{{list[tab]}}" hover-class="news-item-hover" wx:key="{{index}}">
+                <view class="title">
+                    {{item.title}}
+                </view>
+                <view class="time">
+                    {{item.time}}
+                </view>
+            </navigator>
         </view>
     </scroll-view>
 </view>

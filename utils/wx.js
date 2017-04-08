@@ -1,4 +1,4 @@
-var {url} = require("./config");
+var { url } = require("./config");
 
 module.exports = {
     checkHasThirdSession,
@@ -9,53 +9,75 @@ module.exports = {
     fetchCurriculum,
     fetchAchievement,
     fetchNewsList,
-    fetchNewsDetail
+    fetchNewsDetail,
+    searchAddress
 }
-//获取新闻详情
-function fetchNewsDetail(path){
-    return new Promise((reslove,reject)=>{
+
+//搜索通讯录
+function searchAddress(value) {
+    return new Promise((reslove, reject) => {
         wx.request({
-            url:`${url}/api/getnewsdetail`,
-            header:{
-                'Content-Type':'x-www-form-urlencoded'
-            },
-            data:{
-                url:path
-            },
+            url: `${url}/api/address/${value}`,
             success(res) {
-                var {data,err}=res.data;
-                if(err){
-                    reject(err.message);
-                }else{
+                var { data, err } = res.data;
+                if (err) {
+                    reject(err);
+                } else {
                     reslove(data);
                 }
             },
-            fail(){
+            fail() {
+                reject("网络错误");
+            }
+        });
+    });
+}
+//获取新闻详情
+function fetchNewsDetail(path) {
+    return new Promise((reslove, reject) => {
+        wx.request({
+            url: `${url}/api/getnewsdetail`,
+            header: {
+                'Content-Type': 'x-www-form-urlencoded'
+            },
+            data: {
+                url: path
+            },
+            success(res) {
+                var { data, err } = res.data;
+                if (err) {
+                    reject(err.message);
+                } else {
+                    reslove(data);
+                }
+            },
+            fail() {
                 reject("网络错误");
             }
         });
     });
 }
 // 获取新闻流列表
-function fetchNewsList(type,pn=1){
-    return new Promise((reslove,reject)=>{
+function fetchNewsList(type, pn = 1) {
+    return new Promise((reslove, reject) => {
         wx.request({
             url: `${url}/api/getnewslist`,
             header: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data:{
-                type,pn
+            data: {
+                type,
+                pn
             },
             success(res) {
-                var {data,err}=res.data;
-                if(err){
+                var { data, err } = res.data;
+                if (err) {
                     reject(err.message);
-                }else{
+                } else {
                     reslove(data);
                 }
             },
-            fail(){
+            fail() {
                 reject("网络错误");
             }
         });
@@ -63,7 +85,7 @@ function fetchNewsList(type,pn=1){
 }
 
 //获取成绩单
-function fetchAchievement(type="cache"){
+function fetchAchievement(type = "cache") {
     return new Promise((reslove, reject) => {
         wx.request({
             url: `${url}/api/wxapp/fetchachievement?thirdSession=${getThirdSession()}&type=${type}`,
@@ -132,42 +154,42 @@ function fetchInfoPlus(type = "cache") {
 }
 
 //check 是否绑定了urp
-function checkBindUrp(){
-    var {bindUrp}=getApp().globalData;
+function checkBindUrp() {
+    var { bindUrp } = getApp().globalData;
     return bindUrp;
 }
 
 //获取微信登录授权以及  保存   3rd_session
 //首先献策否有thirdSession 如果有返回true，没有的话会重新发起获取getThirdSession请求
 function checkHasThirdSession() {
-    return checkSession().then(({checkSession})=>{
+    return checkSession().then(({ checkSession }) => {
 
         //这里是开发时期的问题，这里checkSession提示成功，但是并没有！！！！
-        var thirdSession=getThirdSession();
-        if(thirdSession&&checkSession){
+        var thirdSession = getThirdSession();
+        if (thirdSession && checkSession) {
             console.log("有thirdSession");
             return {
-                hasThirdSession:true
+                hasThirdSession: true
             }
-        }else{
+        } else {
             console.log("无thirdSession，开始获取并且存贮");
-            return fetchThirdSession().then(({err,thirdSession})=>{
-                if(err){
+            return fetchThirdSession().then(({ err, thirdSession }) => {
+                if (err) {
                     throw err;
-                }else{
-                    return new Promise((reslove,reject)=>{
+                } else {
+                    return new Promise((reslove, reject) => {
                         wx.setStorage({
                             key: '3rd_session',
                             data: thirdSession,
-                            success(){
+                            success() {
                                 console.log("获取thirdSession成功，已存贮");
                                 reslove({
-                                    hasThirdSession:true
+                                    hasThirdSession: true
                                 });
                             },
-                            fail(){
+                            fail() {
                                 reslove({
-                                    err:true
+                                    err: true
                                 });
                             }
                         });
@@ -217,12 +239,12 @@ function checkSession() {
         wx.checkSession({
             success: function() {
                 reslove({
-                    checkSession:true
+                    checkSession: true
                 });
             },
             fail: function() {
                 reslove({
-                    checkSession:false
+                    checkSession: false
                 });
             },
         })
@@ -242,12 +264,12 @@ function fetchBindUrp() {
                 'Content-Type': 'application/json'
             },
             success(res) {
-                var data=res.data;
+                var data = res.data;
                 console.log(data);
-                var {data,err}=data;
-                if(err){
+                var { data, err } = data;
+                if (err) {
                     reject("网络错误");
-                }else{
+                } else {
                     reslove(data);
                     console.log("获取绑定urp状态信息成功");
                     console.log(data);

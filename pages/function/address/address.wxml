@@ -1,0 +1,40 @@
+<view class="address-c">
+	<view class="search-c">
+		<input
+			placeholder="名字、邮箱、电话"
+			focus
+			bindinput="handleChange"
+			value="{{value}}"
+			placeholder-class="search-holder"
+			confirm-type="search"
+		/>
+		<button
+			bindtap="handleSearch"
+			disabled="{{disabled}}"
+			plain="true"
+			hover-class="none"
+			class="button"
+		>搜索</button>
+	</view>
+	<text class="placeholderer" wx:if="{{!list.length&&!firstTime}}">没有该联系人信息</text>
+	<view class="result-c">
+		<view wx:for="{{list}}" wx:key="{{index}}" class="item">
+			<view>
+				<text>姓名</text>
+				<text class="b">{{item.name}}</text>
+			</view>
+			<view>
+				<text>邮箱</text>
+				<text class="b">{{item.email}}</text>
+			</view>
+			<view>
+				<text>手机</text>
+				<text class="b mobile" data-mobile="{{item.mobile}}" bindtap="makeCall">{{item.mobile}}</text>
+			</view>
+			<view>
+				<text>位置</text>
+				<text class="b">{{item.position}}</text>
+			</view>
+		</view>
+	</view>
+</view>

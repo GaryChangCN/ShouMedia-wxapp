@@ -16,6 +16,7 @@
                     focus="true"
                     bindfocus="handleFocus"
                     class="{{errors.username?'errors':''}}"
+                    confirm-type="next"
                 />
                 <text class="err-msg" hidden="{{!errors.username}}">{{errors.username}}</text>
             </div>
@@ -29,7 +30,7 @@
                     bindinput="handleChange"
                     bindfocus="handleFocus"
                     bindblur="handleBlur"                
-                    class="{{errors.password?'errors':''}}"                
+                    class="{{errors.password?'errors':''}}"            confirm-type="send"    
                 />
                 <text class="err-msg" hidden="{{!errors.password}}">{{errors.password}}</text>
             </div>

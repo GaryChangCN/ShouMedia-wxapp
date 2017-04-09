@@ -24,32 +24,41 @@
 	background: #fff;
 }
 .item-coll>.item{
+	display: flex;
 	height: 90rpx;
 	align-items: center;
 	padding: 0 20rpx;
+	border-bottom: 1px solid #eee;
 }
-.item-coll>view{
+.item-coll>.item view{
 	justify-content: center;
 	align-items: center;
 	height: inherit
 }
-.item-coll .a{
+.item-coll .a1{
+	width: 50rpx;
+}
+.item-coll .pre{
+	font-size: 40rpx;
+	color: #66cccc;
+}
+.item-coll .a2{
 	width: 150rpx;
 	font-size: 25rpx;
 }
-.item-coll .b{
+.item-coll .a3{
 	width: 400rpx;
 }
-.item-coll .b input{
+.item-coll .change-avatar .a3 input{
 	font-size: 25rpx;
 	border-bottom: 1px solid lightgrey;
 	color: lightgrey;
 	font-size: 25rpx;
 }
-.item-coll .active{
+.item-coll .change-avatar .active{
 	color: #66cccc !important;
 	border-color: #66cccc !important;
 }
-.item-coll .c{
+.item-coll .a4{
 	width: 150rpx;
 }

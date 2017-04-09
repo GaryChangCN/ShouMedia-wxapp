@@ -7,16 +7,31 @@
 	</view>
 	<view class="item-coll">
 		<view class="change-avatar item">
-			<view class="a">
+			<view class="a1">
+				<i class="iconfont icon-59 pre"></i>
+			</view>
+			<view class="a2">
 				<text>修改头像</text>
 			</view>
-			<view class="b">
+			<view class="a3">
 				<input value="{{seedValue}}" bindinput="handleChangeSeed" hidden="{{seedDisabled}}" class="active" disabled="{{seedDisabled}}"/>
 			</view>
-			<view class="c">
+			<view class="a4">
 				<switch color="#66cccc" bindchange="switchChangeSeed"/>
 			</view>
 		</view>
+		<navigator url="../info/info" class="item">
+			<view class="a1">
+				<i class="iconfont icon-ziliao pre"></i>
+			</view>
+			<view class="a2">
+				<text>个人资料</text>
+			</view>
+			<view class="a3"></view>
+			<view class="a4">
+				<i class="iconfont icon-youyou"></i>
+			</view>
+		</navigator>
 	</view>
 	<view class="item-coll">
 		<view>

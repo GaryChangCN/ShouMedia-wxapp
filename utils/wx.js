@@ -49,7 +49,14 @@ function updateAvatar(avatar){
 function searchAddress(value) {
     return new Promise((resolve, reject) => {
         wx.request({
-            url: `${url}/api/address/${value}`,
+            url: `${url}/api/address`,
+            method:"POST",
+            header:{
+                'Content-Type':'application/json'
+            },
+            data:{
+                keywords:value
+            },
             success(res) {
                 var { data, err } = res.data;
                 if (err) {

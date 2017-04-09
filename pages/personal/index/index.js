@@ -1,4 +1,4 @@
-var {showToastError,fetchWx,updateAvatar}=require("../../../utils/wx");
+var {showToastError,fetchWx,updateAvatar,checkBindUrp}=require("../../../utils/wx");
 var blockies=require("../../../utils/blockies");
 Page({
 	data: {
@@ -7,13 +7,19 @@ Page({
 		seedDisabled:true
 	},
 	onLoad(){
-		try {
-			var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
-			this.setData({userInfo});
-		} catch (error) {
-			showToastError("获取个人信息失败");
+		if(checkBindUrp()){
+			try {
+				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
+				this.setData({userInfo});
+			} catch (error) {
+				showToastError("获取个人信息失败");
+				wx.redirectTo({
+					url: '../index/index'
+				});
+			}
+		}else{
 			wx.redirectTo({
-				url: '../index/index'
+				url: '../../login/login'
 			});
 		}
 	},

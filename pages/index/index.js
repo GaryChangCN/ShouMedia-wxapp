@@ -50,7 +50,6 @@ Page({
                 });
             }
         }).catch((err)=>{
-            console.error(err);
             showToastError("网络错误");
         });
     },

@@ -9,7 +9,7 @@
 
 <template name="feedback">
 	<view class="feedback">
-        <text>课表和URP上不同</text>
+        <text>{{tips}}</text>
         <navigator url="">提交bug</navigator>
     </view>
 </template>

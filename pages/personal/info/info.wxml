@@ -1,0 +1,53 @@
+<import src="../../../template/tools/tools"/>
+
+<view class="info-c">
+	<view class="info-control">
+		<view class="achi-visible">
+            <view bindtap="changeVisible">
+                <i class="iconfont icon-{{visible?'yincang':'xianshi'}}"
+                ></i>
+            </view>
+        </view>
+	</view>
+	<view class="info-content">
+		<view class="item">
+			<view class="key">姓名</view>
+			<view class="value">{{visible?userInfo.name:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">学号</view>
+			<view class="value">{{visible?userInfo.username:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">民族</view>
+			<view class="value">{{visible?userInfo.national:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">政治面貌</view>
+			<view class="value">{{visible?userInfo.political:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">学院</view>
+			<view class="value">{{visible?userInfo.college:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">专业</view>
+			<view class="value">{{visible?userInfo.major:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">班级</view>
+			<view class="value">{{visible?userInfo.className:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">寝室</view>
+			<view class="value">{{visible?userInfo.room:'****'}}</view>
+		</view>
+		<view class="item">
+			<view class="key">邮箱</view>
+			<view class="value">{{visible?userInfo.email:'****'}}</view>
+		</view>
+	</view>
+	<view bindtap="refresh">
+        <template is="refresh" data="{{animationData,refreshDisabled}}" />
+    </view>
+</view>

@@ -1,0 +1,82 @@
+.login-urp-c{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-c{
+    width: 600rpx;
+    flex-direction: column;
+    align-items: center;
+}
+.title-c{
+    widows: inherit;
+    justify-content: center;
+	margin-top: 70rpx;
+}
+.title{
+    font-size: 50rpx;
+    color: #66cccc;
+    font-weight: 200;
+}
+.input-c{
+    width: inherit;
+    flex-direction: column;
+}
+.placeholder,input,textarea{
+    font-weight: 100;
+    font-size: 30rpx;
+    color: lightgrey;
+}
+input,textarea{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #66cccc;
+    height: 80rpx;
+    padding-left: 30rpx;
+    color: #66cccc;
+}
+textarea{
+	height: 200rpx;
+	padding: 10rpx 30rpx;
+}
+.item-c{
+    flex-direction: column;
+	margin-top: 20rpx;
+    justify-content: flex-start;
+}
+.err-msg{
+    font-size: 20rpx;
+    height: 20rpx;
+    color: #d98e92;
+}
+
+.errors{
+    border-color: #d98e92;
+    color: #d98e92;
+}
+.submit{
+    background: #66cccc;
+    border-radius: 0px;
+    color: #fff;
+    height: 60rpx;
+    width: 350rpx;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+}
+.submit[disabled]{
+    background: transparent !important;
+    border-color: lightgrey;
+    color: lightgrey;
+    box-shadow: 0px 0px 2px 0px #aae7e7;
+}
+.feedback{
+    width: 100%;
+    margin-top: 80rpx;
+    color: lightgrey;
+    padding: 0 60rpx;
+    text-indent: 40rpx;
+}

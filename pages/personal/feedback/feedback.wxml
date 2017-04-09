@@ -1,0 +1,49 @@
+<view class="login-urp-c">
+    <form bindsubmit="handleSubmit" bindreset="formReset" class="form-c">
+        <view class="title-c">
+            <text class="title">提交反馈</text>
+        </view>
+        <view class="input-c">
+            <div class="item-c">
+                <input
+                    placeholder="联系email"
+                    data-name="email"
+                    placeholder-class="placeholder"
+                    value="{{email}}"
+                    bindinput="handleChange"
+                    bindblur="handleBlur"
+                    focus="true"
+                    bindfocus="handleFocus"
+                    class="{{errors.email?'errors':''}}"
+                    confirm-type="next"
+                />
+                <text class="err-msg" hidden="{{!errors.email}}">{{errors.email}}</text>
+            </div>
+            <div class="item-c">
+                <textarea
+                    data-name="content"
+                    placeholder="反馈内容"
+                    placeholder-class="placeholder"
+                    value="{{content}}"
+                    bindinput="handleChange"
+                    bindfocus="handleFocus"
+                    bindblur="handleBlur"                
+                    class="{{errors.content?'errors':''}}"
+					confirm-type="send"    
+                />
+                <text class="err-msg" hidden="{{!errors.content}}">{{errors.content}}</text>
+            </div>
+        </view>
+        <view>
+            <button
+                disabled="{{loading}}"
+                class="submit"
+                loading="{{loading}}"
+                formType="submit"
+            >提交</button>
+        </view>
+    </form>
+    <view class="feedback">
+        本项目由个人维护，如果有和教务系统上信息不一致或者有程序bug可以在这里发送反馈，请务必填写正确的联系方式，以便我能很快的联系到您，当然你也可以在github上提交issue，项目名为ShouMedia-wxapp。如果不能获取到urp信息请检查学校urp是否还能打开，如果不能则为学校urp问题。最后感谢您的反馈让海大新媒体小程序能做的更好。
+    </view>
+</view>

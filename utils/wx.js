@@ -12,7 +12,36 @@ module.exports = {
     fetchNewsDetail,
     searchAddress,
     fetchWx,
-    updateAvatar
+    updateAvatar,
+    feedback
+}
+
+//发送反馈
+
+function feedback(content,email,username){
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/feedback`,
+            method:"POST",
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data:{
+                content,email,username
+            },
+            success: function(res) {
+                var {data,err}=res.data;
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject("网络错误");
+            }
+        })
+    });
 }
 
 //更新头像seed

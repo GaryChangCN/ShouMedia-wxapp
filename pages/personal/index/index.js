@@ -7,7 +7,7 @@ Page({
 		seedDisabled:true
 	},
 	onLoad(){
-		if(checkBindUrp()){
+		// if(checkBindUrp()){
 			try {
 				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
 				this.setData({userInfo});
@@ -17,11 +17,11 @@ Page({
 					url: '../index/index'
 				});
 			}
-		}else{
-			wx.redirectTo({
-				url: '../../login/login'
-			});
-		}
+		// }else{
+			// wx.redirectTo({
+				// url: '../../login/login'
+			// });
+		// }
 	},
 	onReady(){
 		this.fetchAvatar()

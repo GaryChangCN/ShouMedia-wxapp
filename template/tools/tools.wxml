@@ -10,6 +10,6 @@
 <template name="feedback">
 	<view class="feedback">
         <text>{{tips}}</text>
-        <navigator url="">提交bug</navigator>
+        <navigator url="/pages/personal/feedback/feedback">提交bug</navigator>
     </view>
 </template>

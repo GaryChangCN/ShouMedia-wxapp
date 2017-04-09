@@ -2,7 +2,6 @@ var { showToastError, fetchAchievement ,checkBindUrp} = require("../../../utils/
 
 Page({
     data: {
-        //目前没有成绩模拟下
         achievementList: [],
         refreshDisabled: false,
         visible: false,

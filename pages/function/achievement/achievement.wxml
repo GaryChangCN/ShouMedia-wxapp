@@ -10,7 +10,7 @@
         </view>
     </view>
     <view class="achi">
-        <text class="placeholderer" wx:if="{{!achievementList.length}}">当前没有成绩</text>
+        <text class="placeholderer" wx:if="{{!achievementList.length}}">还没有出成绩</text>
         <view class="achi-item" wx:for="{{achievementList}}" wx:for-index="i" wx:key="{{i}}">
             <view class="achi-item-header">
                 <text>{{item.kcm}}</text>
@@ -47,5 +47,5 @@
     <view bindtap="refresh">
         <template is="refresh" data="{{animationData,refreshDisabled}}" />
     </view>
-    <template is="feedback" />
+    <template is="feedback" data="{{tips:'成绩和urp上不同'}}"/>
 </view>

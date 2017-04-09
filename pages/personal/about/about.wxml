@@ -1,0 +1,24 @@
+<view class="about">
+	<view class="logo">
+		<image src="http://oo4y79ovc.bkt.clouddn.com/%E8%B5%84%E6%BA%90%201.svg"></image>
+	</view>
+	<view class="title">海大新媒体-微信小程序</view>
+    <text>
+		本项目由GaryChang开发，所有信息都基于上海海洋大学urp教务系统，及上海海洋大学官网。
+	</text>
+    <text>
+		本项目基于MIT开源协议进行开源，项目开源在github仓库名为ShouMedia-wxapp，欢迎学弟学妹进行后续维护工作，项目后台同样基于MIT开源协议进行开源,仓库名为ShouMedia。
+	</text>
+    <text>
+		本项目不做任何盈利，仅服务于海大学子，让海大学子能更方便的进行日常信息查询。有任何建议都可以在 <navigator url="../feedback/feedback">反馈信息</navigator>,反馈给项目后台。
+	</text>
+    <text>
+		鸣谢 @肥龙 提供项目logo设计。
+	</text>
+    <text>
+		版本历史
+	</text>
+    <text>
+		1.0.0
+	</text>
+</view>

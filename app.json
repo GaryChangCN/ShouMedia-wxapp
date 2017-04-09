@@ -8,7 +8,9 @@
         "pages/function/newsDetail/newsDetail",
         "pages/function/address/address",
         "pages/personal/index/index",
-        "pages/personal/info/info"
+        "pages/personal/info/info",
+        "pages/personal/feedback/feedback",
+        "pages/personal/about/about"
     ],
     "window": {
         "backgroundTextStyle": "light",

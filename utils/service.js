@@ -13,7 +13,7 @@ module.exports = {
     fetchCurriculum,
     fetchInfoPlus,
     fetchBindUrp,
-    // fetchThirdSession
+    bindUrp
 }
 
 //发送反馈
@@ -279,37 +279,32 @@ function fetchBindUrp() {
     });
 }
 
-//从服务器获取thirdSession
-// function fetchThirdSession() {
-//     return new Promise((resolve, reject) => {
-//         wx.login({
-//             success: function({ code, errMsg }) {
-//                 if (code) {
-//                     wx.request({
-//                         url: `${url}/api/wxapp/thirdSession`,
-//                         method: "POST",
-//                         header: {
-//                             'Content-Type': 'application/json'
-//                         },
-//                         data: {
-//                             code
-//                         },
-//                         success: function(res) {
-//                             var { data, err } = res.data;
-//                             if (err) {
-//                                 resolve(netError);
-//                             } else {
-//                                 resolve(data);
-//                             }
-//                         },
-//                         fail(){
-//                             reject(netError);
-//                         }
-//                     });
-//                 } else {
-//                     reject("未授权");
-//                 }
-//             }
-//         });
-//     });
-// }
+
+//绑定urp
+function bindUrp(username,urppassword){
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url:`${url}/api/wxapp/bindUrp`,
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            data:{
+                username,
+                urppassword,
+                thirdSession:getLocalThirdSession()
+            },
+            success(res){
+                var {err,data}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError);
+            }
+        });
+    });
+}

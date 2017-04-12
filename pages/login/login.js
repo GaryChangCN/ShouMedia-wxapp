@@ -1,5 +1,5 @@
-var { url } = require("../../utils/config");
-var { showToastError } = require('../../utils/wx');
+var { showToastError } = require('../../utils/wxApp');
+var {bindUrp}=require('../../utils/service');
 
 Page({
     data: {
@@ -33,46 +33,20 @@ Page({
     handleSubmit() {
         var _this = this;
         var { username, password } = this.data;
-        var thirdSession = wx.getStorageSync('3rd_session');
         console.log("发送验证绑定urp请求");
-        wx.request({
-            url: url + '/api/wxapp/urpLogin',
-            method: "POST",
-            header: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: {
-                username,
-                urppassword: password,
-                thirdSession
-            },
-            success(res) {
-                var { data, err } = res.data;
-                var { urpPass, bindWxApp, userInfo } = data;
-                if (err && !data) {
-                    showToastError("网络错误");
-                } else if (!urpPass) {
-                    showToastError("账号密码错误");
-                    _this.validation(true);
-                } else {
-                    if (bindWxApp) {
-                        console.log("绑定urp成功，跳转到首页");
-                        wx.redirectTo({
-                            url: '../index/index'
-                        });
-                    } else {
-                        showToastError("没有微信登录授权，请重新授权");
-                    }
-                }
-            },
-            fail() {
-                showToastError("网络错误");
-            },
-            complete() {
-                _this.setData({
-                    loading: false
+        bindUrp(username,password).then((data)=>{
+            var {pass}=data;
+            if(pass){
+                console.log("绑定成功，跳转到首页");
+                wx.redirectTo({
+                    url: '../index/index'
                 });
+            }else{
+                showToastError("密码错误");
             }
+        }).catch((err)=>{
+            console.log(err);
+            showToastError(err);
         });
     },
     //清空form

@@ -22,6 +22,7 @@ function fetchThirdSession() {
                             code
                         },
                         success: function(res) {
+                            console.log("获取thirdsession成功，如果没有对应行，则在集合创建");
                             var { data, err } = res.data;
                             if (err) {
                                 resolve(netError);

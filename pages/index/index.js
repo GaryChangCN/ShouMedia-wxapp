@@ -1,16 +1,11 @@
-var {showToastError,wxAuth}=require('../../utils/wxApp');
-var {fetchBindUrp,fetchInfoPlus}=require('../../utils/service');
+var {showToastError,wxAuth,navigateToLogin}=require('../../utils/wxApp');
+var {fetchBindUrp,fetchInfoPlus,getAvatar}=require('../../utils/service');
 var blockies=require("../../utils/blockies");
 Page({
     data: {
         username:"学号",
         name:"姓名",
         bindUrp:true
-    },
-    navigateToLogin() {
-        wx.navigateTo({
-            url: '../login/login'
-        });
     },
     onLoad() {
         console.log("显示主页");
@@ -44,7 +39,7 @@ Page({
             console.log("获取用户信息成功");
             if(!pass){
                 showToastError("urp密码错误");
-                _this.navigateToLogin();
+                navigateToLogin();
                 return false;
             }
             wx.setStorage({
@@ -61,6 +56,7 @@ Page({
             console.log("开始获取头像");
             return getAvatar();
         }).then((data)=>{
+            console.log(data);
             if(!data){
                 return false;
             }

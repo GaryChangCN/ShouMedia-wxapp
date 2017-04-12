@@ -1,4 +1,5 @@
-var {showToastError,fetchInfoPlus,checkHasThirdSession,fetchBindUrp,fetchWx}=require("../../utils/wx");
+var {showToastError,wxAuth}=require('../../utils/wxApp');
+var {fetchBindUrp}=require('../../utils/service');
 var blockies=require("../../utils/blockies");
 Page({
     data: {
@@ -6,51 +7,73 @@ Page({
         name:"姓名",
         bindUrp:true
     },
-    toLogin() {
+    navigateToLogin() {
         wx.navigateTo({
             url: '../login/login'
-        })
+        });
     },
     onLoad() {
         console.log("显示主页");
         var {globalData}=getApp();
         var _this=this;
-        checkHasThirdSession().then(({hasThirdSession,err})=>{
-            if(err){
-                console.log("储存登录信息失败");
-                showToastError("储存登录信息失败");
+        wxAuth().then(({wxAuth})=>{
+            if(wxAuth){
+                console.log("已经有微信登录授权");
+                console.log("开始获取bindUrp");
+                return fetchBindUrp();
             }else{
-                console.log("已有储存的thirdSession");
-                return fetchBindUrp().then(({bindUrp})=>{
-                    if(bindUrp){
-                        console.log("已经绑定urp");
-                        globalData.bindUrp=true;
-                        _this.setData({bindUrp:true});
-                        return fetchInfoPlus("cache").then((userInfo)=>{
-                            wx.setStorage({
-                                key: 'userInfo',
-                                data: JSON.stringify(userInfo)
-                            });
-                            globalData.userInfo=userInfo;
-                            var {username,name}=userInfo;
-                            _this.setData({
-                                username,
-                                name
-                            });
-                            return fetchWx("avatar").then(({avatar})=>{
-                                avatar=avatar||username;
-                                getApp().globalData.avatarSeed=avatar;
-                                _this.updateIdenticon(avatar);
-                            });
-                        });
-                    }else{
-                        console.log("未绑定urp，部分功能不可用");
-                        _this.setData({bindUrp:false});
-                    }
-                });
+                throw "无微信授权";
             }
+        }).then(({bindUrp})=>{
+            if(bindUrp){
+                console.log("已经绑定urp");
+                globalData.memoryBindUrp=true;
+                _this.setData({bindUrp:true});
+                console.log("开始获取用户信息");
+                return fetchInfoPlus("cache");
+            }else{
+                console.log("未绑定urp");
+                _this.setData({bindUrp:false});
+                return false;
+            }
+        }).then((data)=>{
+            if(!data){
+                return false;
+            }
+            var {ret,pass}=data;
+            console.log("获取用户信息成功");
+            if(!pass){
+                showToastError("urp密码错误");
+                _this.navigateToLogin();
+                return false;
+            }
+            wx.setStorage({
+                key: 'userInfo',
+                data: JSON.stringify(ret)
+            });
+            globalData.userInfo=ret;
+            var {username,name}=ret;
+            _this.setData({
+                username,
+                name
+            });
+            console.log("储存用户信息到storage和globalData");
+            console.log("开始获取头像");
+            return getAvatar();
+        }).then((data)=>{
+            if(!data){
+                return false;
+            }
+            console.log("获取头像成功");
+            var {avatar}=data;
+            globalData.avatarSeed=avatar;
+            _this.updateIdenticon(avatar);
         }).catch((err)=>{
-            showToastError("网络错误");
+            if(typeof err =='string'){
+                showToastError(err);
+            }else{
+                console.log(err);
+            }
         });
     },
     onShow(){

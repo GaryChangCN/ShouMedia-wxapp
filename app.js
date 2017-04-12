@@ -3,7 +3,7 @@ App({
     onLaunch: function() {
     },
     globalData: {
-        bindUrp: false,
+        memoryBindUrp: false,
         userInfo: {
 
         },

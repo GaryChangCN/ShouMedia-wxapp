@@ -1,5 +1,5 @@
 var {showToastError,wxAuth}=require('../../utils/wxApp');
-var {fetchBindUrp}=require('../../utils/service');
+var {fetchBindUrp,fetchInfoPlus}=require('../../utils/service');
 var blockies=require("../../utils/blockies");
 Page({
     data: {

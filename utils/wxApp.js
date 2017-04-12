@@ -4,7 +4,8 @@ module.exports={
 	wxAuth,
     showToastError,
     getLocalThirdSession,
-    checkMemoryBindUrp
+    checkMemoryBindUrp,
+    navigateToLogin
 }
 
 function fetchThirdSession() {
@@ -112,6 +113,13 @@ function getLocalThirdSession() {
 
 //检查本地是否有绑定了urp信息
 function checkMemoryBindUrp() {
-    var { bindUrp } = getApp().globalData;
-    return bindUrp;
+    var { memoryBindUrp } = getApp().globalData;
+    return memoryBindUrp;
+}
+
+//跳转到login页面
+function navigateToLogin() {
+    wx.navigateTo({
+        url: '/pages/login/login'
+    });
 }

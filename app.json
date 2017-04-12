@@ -1,7 +1,8 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/function/curriculum/curriculum"
     ],
     "window": {
         "backgroundTextStyle": "light",

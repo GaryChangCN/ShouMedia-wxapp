@@ -1,4 +1,6 @@
-var { showToastError, fetchCurriculum ,checkBindUrp} = require("../../../utils/wx");
+// var { showToastError, fetchCurriculum ,checkBindUrp} = require("../../../utils/wx");
+var {fetchCurriculum}=require('../../../utils/service');
+var {showToastError,checkMemoryBindUrp,navigateToLogin}=require('../../../utils/wxApp');
 
 Page({
     data: {
@@ -18,12 +20,10 @@ Page({
         });
     },
     onLoad: function(options) {
-        if(checkBindUrp()){
+        if(checkMemoryBindUrp()){
             this.fetch("cache");
         }else{
-            wx.redirectTo({
-                url: '../../login/login'
-            });
+            navigateToLogin();
         }
     },
     refresh() {
@@ -49,11 +49,15 @@ Page({
         this.setData({
             refreshDisabled: true
         });
-        fetchCurriculum(type).then((curriculumList) => {
-            _this.setData({
-                curriculumList,
-                refreshDisabled: false
-            });
+        fetchCurriculum(type).then(({ret,pass}) => {
+            if(pass){
+                _this.setData({
+                    curriculumList:ret,
+                    refreshDisabled: false
+                });
+            }else{
+                navigateToLogin();
+            }
         }).catch((err) => {
             showToastError(err);
         });

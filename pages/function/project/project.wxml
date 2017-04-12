@@ -1,0 +1,67 @@
+<view class="address-c">
+	<view class="search-c">
+		<input
+			placeholder="搜索课程信息"
+			focus
+			bindinput="handleChange"
+			value="{{value}}"
+			placeholder-class="search-holder"
+			confirm-type="search"
+		/>
+		<button
+			bindtap="handleSearch"
+			disabled="{{disabled}}"
+			plain="true"
+			hover-class="none"
+			class="button"
+		>搜索</button>
+	</view>
+	<text class="placeholderer" wx:if="{{!list.length&&!firstTime}}">没有当前搜索课程信息</text>
+	<text class="tips" wx:if="{{firstTime}}">
+		可搜索课程号、教师名、课程名、支持模糊搜索，当前支持2013到2017学年的课程信息
+	</text>
+	<view class="result-c">
+		<view wx:for="{{list}}" wx:key="{{index}}" class="item">
+			<view>
+				<text>开设学期</text>
+				<text class="b">{{item.semester}}</text>
+			</view>
+			<view>
+				<text>课程名</text>
+				<text class="b">{{item.kcm}}</text>
+			</view>
+			<view>
+				<text>课程号</text>
+				<text class="b">{{item.kch}}</text>
+			</view>
+			<view>
+				<text>课序号</text>
+				<text class="b">{{item.kxh}}</text>
+			</view>
+			<view>
+				<text>开设学院</text>
+				<text class="b">{{item.xy}}</text>
+			</view>
+			<view class="spacial-view">
+				<text>班级</text>
+				<text class="b spacial-b">{{item.bj}}</text>
+			</view>
+			<view>
+				<text>教师</text>
+				<text class="b">{{item.js}}</text>
+			</view>
+			<view>
+				<text>周次</text>
+				<text class="b">{{item.zc}}</text>
+			</view>
+			<view>
+				<text>时间</text>
+				<text class="b">{{item.sj}}</text>
+			</view>
+			<view>
+				<text>地点</text>
+				<text class="b">{{item.dd}}</text>
+			</view>
+		</view>
+	</view>
+</view>

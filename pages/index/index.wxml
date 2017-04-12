@@ -20,8 +20,8 @@
     </view>
     <view class="function-c">
         <navigator url="" class="function yikatong {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
-            <i class="iconfont icon-xiaoyuanjiaofei"></i>
-            <text>校园一卡通</text>
+            <i class="iconfont icon-xinxi"></i>
+            <text>消息通知</text>
         </navigator>
         <view class="function xiaoli" hover="true" hover-class="function-hover">
             <i class="iconfont icon-rili"></i>
@@ -47,12 +47,12 @@
             <i class="iconfont icon-xinwen"></i>
             <text>新闻公告</text>
         </navigator>
-        <view class="function fanganwanchengdu  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
-            <i class="iconfont icon-bingzhuangtu"></i>
-            <text>方案完成度</text>
-        </view>
+        <navigator url="../function/project/project" class="function fanganwanchengdu  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+            <i class="iconfont icon-wendangchaxun"></i>
+            <text>课程查询</text>
+        </navigator>
         <view class="function kaoshianpai {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
-            <i class="iconfont icon-kaoshi"></i>
+            <i class="iconfont icon-xingjikaoshi"></i>
             <text>考试安排</text>
         </view>
     </view>

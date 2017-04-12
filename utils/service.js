@@ -2,6 +2,7 @@ var { url,netError } = require("./config");
 var {getLocalThirdSession}=require('./wxApp');
 
 module.exports = {
+    searchProject,
     feedback,
     updateAvatar,
     getAvatar,
@@ -14,6 +15,30 @@ module.exports = {
     fetchInfoPlus,
     fetchBindUrp,
     bindUrp
+}
+
+// 搜索课程
+function searchProject(keywords) {
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/searchClass`,
+            method:"POST",
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data:{
+                keywords
+            },
+            success: function(res) {
+                var {data,err}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            }
+        });
+    });
 }
 
 //发送反馈

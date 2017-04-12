@@ -1,0 +1,13 @@
+@import '../address/address.wxss';
+
+.tips{
+	width: 100%;
+	padding: 0 40rpx;
+	margin-top: 20rpx;
+	line-height: 30rpx;
+	font-size: 20rpx;
+	color: lightgrey;
+}
+.spacial-view,.spacial-b{
+	height: auto !important;
+}

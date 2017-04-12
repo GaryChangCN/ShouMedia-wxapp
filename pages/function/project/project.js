@@ -1,5 +1,5 @@
 var {showToastError}=require("../../../utils/wxApp");
-var {searchAddress}=require('../../../utils/service');
+var {searchProject}=require('../../../utils/service');
 
 Page({
 	data: {
@@ -32,27 +32,19 @@ Page({
 			disabled:true,
 			firstTime:false
 		});
-		searchAddress(value).then((data)=>{
+		searchProject(value).then((data)=>{
 			_this.setData({
 				disabled:false,
-				list:data
+				list:data.list
 			});
 		}).catch((err)=>{
 			showToastError(err);
 		});
 	},
-	makeCall(e){
-		var {mobile}=e.currentTarget.dataset;
-		if(/[0-9]{11}/.test(mobile)){
-			wx.makePhoneCall({
-				phoneNumber: mobile
-			});
-		}
-	},
 	onShareAppMessage(){
 		return {
-			title:"上海海洋大学通讯录查询",
-			path:"/pages/function/address/address?value="+this.data.value
+			title:"上海海洋大学课程查询",
+			path:"/pages/function/project/project?value="+this.data.value
 		}
 	}
 })

@@ -36,11 +36,13 @@
 .result-c{
 	width: 100%;
 	flex-direction: column;
+	background-color: #eee;
 }
 .result-c>.item{
 	width: 100%;
 	flex-direction: column;
-	border-bottom: 1px solid lightgrey;
+	background-color: #fff;
+	margin-bottom: 20rpx;
 	padding: 30rpx 70rpx;
 }
 .result-c>.item view{

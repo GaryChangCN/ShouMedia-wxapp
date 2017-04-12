@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'iconfont';
-    src: url('https://at.alicdn.com/t/font_5yirsau9o2edn29.ttf') format('truetype');
+    src: url('https://at.alicdn.com/t/font_qg3ica3vjhkkpgb9.ttf') format('truetype');
 }
 
 .iconfont {
@@ -10,7 +10,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .icon-shanchu:before { content: "\e600"; }
 
 .icon-guanbi:before { content: "\e6a8"; }
@@ -51,6 +50,8 @@
 
 .icon-kaoshi:before { content: "\e6ff"; }
 
+.icon-xingjikaoshi:before { content: "\e77e"; }
+
 .icon-youjian:before { content: "\e786"; }
 
 .icon-ziliao:before { content: "\e64f"; }
@@ -72,3 +73,5 @@
 .icon-tubiaozhizuomoban:before { content: "\e603"; }
 
 .icon-xinwen:before { content: "\e612"; }
+
+.icon-wendangchaxun:before { content: "\e66f"; }

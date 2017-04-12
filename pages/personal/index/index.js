@@ -1,4 +1,5 @@
-var {showToastError,fetchWx,updateAvatar,checkBindUrp}=require("../../../utils/wx");
+var {showToastError,checkMemoryBindUrp,navigateToLogin,showToastSuccess}=require("../../../utils/wxApp");
+var {getAvatar,updateAvatar}=require('../../../utils/service');
 var blockies=require("../../../utils/blockies");
 Page({
 	data: {
@@ -7,7 +8,7 @@ Page({
 		seedDisabled:true
 	},
 	onLoad(){
-		// if(checkBindUrp()){
+		if(checkMemoryBindUrp()){
 			try {
 				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
 				this.setData({userInfo});
@@ -17,11 +18,9 @@ Page({
 					url: '../index/index'
 				});
 			}
-		// }else{
-			// wx.redirectTo({
-				// url: '../../login/login'
-			// });
-		// }
+		}else{
+			navigateToLogin();
+		}
 	},
 	onReady(){
 		this.fetchAvatar()
@@ -43,8 +42,8 @@ Page({
 	},
 	fetchAvatar(){
 		var _this=this;
-		fetchWx("avatar").then(({username,avatar})=>{
-			var seed=avatar||username;
+		getAvatar().then(({avatar})=>{
+			var seed=avatar;
 			_this.setData({
 				seed,
 				seedValue:seed
@@ -60,6 +59,7 @@ Page({
 			wx.hideNavigationBarLoading();
 			_this.setData({seed:seedValue});
 			getApp().globalData.avatarSeed=seedValue;
+			showToastSuccess("修改成功");
 		}).catch((err)=>{
 			wx.hideNavigationBarLoading();
 			showToastError(err);

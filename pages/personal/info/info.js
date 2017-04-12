@@ -1,5 +1,5 @@
-var {showToastError,fetchInfoPlus,checkBindUrp}=require("../../../utils/wx");
-
+var {showToastError,checkMemoryBindUrp,navigateToLogin}=require("../../../utils/wxApp");
+var {fetchInfoPlus}=require('../../../utils/service');
 Page({
 	data: {
         refreshDisabled: false,
@@ -9,7 +9,7 @@ Page({
         rotate:0
 	},
 	onLoad(){
-		if(checkBindUrp()){
+		if(checkMemoryBindUrp()){
 			try {
 				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
 				this.setData({userInfo});
@@ -31,9 +31,7 @@ Page({
 				}
 			});
 		}else{
-			wx.redirectTo({
-				url: '../../login/login'
-			});
+			navigateToLogin();
 		}
 	},
 	changeVisible(){
@@ -64,14 +62,18 @@ Page({
     },
 	fetch(type){
 		var _this=this;
-		fetchInfoPlus(type).then((data)=>{
-			_this.setData({
-				userInfo:data
-			});
-			wx.setStorage({
-				key: 'userInfo',
-				data: JSON.stringify(data)
-			});
+		fetchInfoPlus(type).then(({ret,pass})=>{
+			if(pass){
+				_this.setData({
+					userInfo:data
+				});
+				wx.setStorage({
+					key: 'userInfo',
+					data: JSON.stringify(data)
+				});
+			}else{
+				navigateToLogin();
+			}
 		}).catch((err)=>{
 			showToastError(err);
 		});

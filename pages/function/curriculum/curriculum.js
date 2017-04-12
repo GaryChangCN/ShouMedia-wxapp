@@ -1,4 +1,3 @@
-// var { showToastError, fetchCurriculum ,checkBindUrp} = require("../../../utils/wx");
 var {fetchCurriculum}=require('../../../utils/service');
 var {showToastError,checkMemoryBindUrp,navigateToLogin}=require('../../../utils/wxApp');
 

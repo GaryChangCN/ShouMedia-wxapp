@@ -1,4 +1,5 @@
-var {showToastError,searchAddress}=require("../../../utils/wx");
+var {showToastError}=require("../../../utils/wxApp");
+var {searchAddress}=require('../../../utils/service');
 
 Page({
 	data: {
@@ -30,7 +31,6 @@ Page({
 				disabled:false,
 				list:data
 			});
-			console.log(data);
 		}).catch((err)=>{
 			showToastError(err);
 		});

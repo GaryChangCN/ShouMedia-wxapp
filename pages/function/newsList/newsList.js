@@ -1,4 +1,5 @@
-var { fetchNewsList, showToastError } = require("../../../utils/wx");
+var {showToastError}=require('../../../utils/wxApp');
+var {fetchNewsList}=require('../../../utils/service');
 
 Page({
     data: {
@@ -38,7 +39,6 @@ Page({
         var { tab, pn, list } = this.data;
         fetchNewsList(tab, pn).then(function(data){
             var fetchList = data.list;
-            console.log(fetchList);
             if (fetchList.length == 0) {
                 showToastError("没有更多了");
             }

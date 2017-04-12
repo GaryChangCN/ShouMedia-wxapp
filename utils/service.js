@@ -53,7 +53,7 @@ function updateAvatar(avatar){
                 'Content-Type': 'application/json'
             },
             data:{
-                data:avatar
+                avatar
             },
             success(res) {
                 var { data, err } = res.data;
@@ -120,7 +120,7 @@ function searchAddress(value) {
 function fetchNewsDetail(path) {
     return new Promise((resolve, reject) => {
         wx.request({
-            url: `${url}/api/ewsdetail`,
+            url: `${url}/api/newsdetail`,
             header: {
                 'Content-Type': 'x-www-form-urlencoded'
             },

@@ -2,7 +2,14 @@
     "pages": [
         "pages/index/index",
         "pages/login/login",
-        "pages/function/curriculum/curriculum"
+        "pages/function/curriculum/curriculum",        "pages/function/achievement/achievement",
+        "pages/function/newsList/newsList",
+        "pages/function/newsDetail/newsDetail",
+        "pages/function/address/address",
+        "pages/personal/index/index",
+        "pages/personal/info/info",
+        "pages/personal/feedback/feedback",
+        "pages/personal/about/about"
     ],
     "window": {
         "backgroundTextStyle": "light",

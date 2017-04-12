@@ -1,5 +1,5 @@
-var { showToastError,feedback } = require('../../../utils/wx');
-
+var { showToastError,showToastSuccess } = require('../../../utils/wxApp');
+var {feedback}=require('../../../utils/service');
 Page({
     data: {
         email: "",
@@ -34,7 +34,7 @@ Page({
         var { email, content } = this.data;
 		var {username}=getApp().globalData.userInfo||"";
 		feedback(content,email,username).then((data)=>{
-			showToastError("提交成功");
+			showToastSuccess("提交成功");
 			_this.cleanForm();
 		}).catch((err)=>{
 			showToastError(err);

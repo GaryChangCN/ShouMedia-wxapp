@@ -1,4 +1,5 @@
-var {showToastError,fetchNewsDetail}=require("../../../utils/wx");
+var {showToastError}=require("../../../utils/wxApp");
+var {fetchNewsDetail}=require('../../..//utils/service');
 
 Page({
 	data: {

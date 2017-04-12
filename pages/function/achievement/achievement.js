@@ -1,4 +1,5 @@
-var { showToastError, fetchAchievement ,checkBindUrp} = require("../../../utils/wx");
+var {showToastError,checkMemoryBindUrp,navigateToLogin}=require('../../../utils/wxApp');
+var {fetchNewAchievement}=require('../../../utils/service');
 
 Page({
     data: {
@@ -9,7 +10,7 @@ Page({
         rotate:0
     },
     onLoad: function(options) {
-        if(checkBindUrp()){
+        if(checkMemoryBindUrp()){
             var _this=this;
             wx.getStorage({
                 key: 'achievementVisible',
@@ -26,9 +27,7 @@ Page({
             });
             this.fetch();
         }else{
-            wx.redirectTo({
-                url: '../../login/login'
-            });
+            navigateToLogin();
         }
     },
     changeVisible(e) {
@@ -70,11 +69,15 @@ Page({
                 });
             }, 1000);
         }
-        fetchAchievement("cache").then((achievementList) => {
-            _this.setData({
-                achievementList,
-                refreshDisabled:false
-            });
+        fetchNewAchievement("cache").then(({ret,pass}) => {
+            if(pass){
+                _this.setData({
+                    achievementList:ret,
+                    refreshDisabled:false
+                });
+            }else{
+                navigateToLogin();
+            }
         }).catch((err)=>{
             showToastError(err);
         });

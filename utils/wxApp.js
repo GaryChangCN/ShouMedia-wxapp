@@ -3,11 +3,13 @@ var {url,netError}=require('./config');
 module.exports={
 	wxAuth,
     showToastError,
+    showToastSuccess,
     getLocalThirdSession,
     checkMemoryBindUrp,
     navigateToLogin
 }
 
+//获取thirdSession 如果没有对应行，则在集合创建
 function fetchThirdSession() {
     return new Promise((resolve, reject) => {
         wx.login({
@@ -23,7 +25,6 @@ function fetchThirdSession() {
                             code
                         },
                         success: function(res) {
-                            console.log("获取thirdsession成功，如果没有对应行，则在集合创建");
                             var { data, err } = res.data;
                             if (err) {
                                 resolve(netError);
@@ -42,7 +43,6 @@ function fetchThirdSession() {
         });
     });
 }
-
 
 //获取微信登录授权以及  保存   3rd_session
 //首先献策否有thirdSession 如果有返回true，没有的话会重新发起获取getLocalThirdSession请求
@@ -98,11 +98,23 @@ function checkSession() {
 }
 
 // show toast error
-function showToastError(title) {
+function showToastError(title,time=1000) {
+    if(typeof title == "object"){
+        console.error(title);
+    }
     wx.showToast({
         title,
         icon: 'loading',
-        duration: 1000
+        duration: time
+    });
+}
+
+//showtoastSuccess
+function showToastSuccess(title,time=500) {
+    wx.showToast({
+        title,
+        icon: 'success',
+        duration: time
     });
 }
 

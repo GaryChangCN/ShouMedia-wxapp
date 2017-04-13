@@ -1,0 +1,43 @@
+<import src="../../../template/tools/tools.wxml" />
+<view class="school-c">
+    <picker value="0" range="{{achievementList}}" range-key="title" class="picker">
+        <view class="head">
+            <text>{{"<"}}</text>
+            <view>{{tab}}</view>
+            <text>{{">"}}</text> {{achievementList[index]}}
+        </view>
+    </picker>
+    <view class="achi-item" wx:for="{{achievementList}}" wx:for-index="i" wx:key="{{i}}">
+        <view class="achi-item-header">
+            <text>{{item.kcm}}</text>
+            <text>{{visible?item.cj:'...'}}</text>
+        </view>
+        <view class="achi-item-panel">
+            <view>
+                <text>课程名</text>
+                <text>{{item.kcm}}</text>
+            </view>
+            <view>
+                <text>课程号</text>
+                <text>{{item.kch}}</text>
+            </view>
+            <view>
+                <text>课序号</text>
+                <text>{{item.kxh}}</text>
+            </view>
+            <view>
+                <text>课程属性</text>
+                <text>{{item.kcsx}}</text>
+            </view>
+            <view>
+                <text>学分</text>
+                <text>{{item.xf}}</text>
+            </view>
+            <view>
+                <text>成绩</text>
+                <text>{{visible?item.cj:'...'}}</text>
+            </view>
+        </view>
+    </view>
+    <template is="feedback" data="{{tips:'校历显示错误'}}" />
+</view>

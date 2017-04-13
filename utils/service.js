@@ -13,11 +13,39 @@ module.exports = {
     fetchNewAchievement,
     fetchOldAchievement,
     fetchCurriculum,
+    fetchOldAchi,
     fetchInfoPlus,
     fetchBindUrp,
     fetchSchoolDate,
     bindUrp,
     unBindUrp
+}
+
+//获取历史成绩
+function fetchOldAchi(type="cache") {
+    return new Promise ((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/wxapp/oldAchi`,
+            header: {
+                'Content-Type': 'x-www-form-urlencoded'
+            },
+            data:{
+                type,
+                thirdSession:getLocalThirdSession()
+            },
+            success: function(res) {
+                var {data,err}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError);
+            }
+        });
+    });
 }
 
 //获取考试安排

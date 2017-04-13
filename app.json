@@ -4,6 +4,7 @@
         "pages/login/login",
         "pages/function/curriculum/curriculum",
         "pages/function/achievement/achievement",
+        "pages/function/oldAchi/oldAchi",
         "pages/function/project/project",
         "pages/function/newsList/newsList",
         "pages/function/newsDetail/newsDetail",

@@ -46,7 +46,7 @@
 		</navigator>
 	</view>
 	<view class="item-coll">
-		<navigator url="../feedback/feedback" class="item">
+		<navigator url="../../function/oldAchi/oldAchi" class="item">
 			<view class="a1">
 				<i class="iconfont icon-my-score pre"></i>
 			</view>

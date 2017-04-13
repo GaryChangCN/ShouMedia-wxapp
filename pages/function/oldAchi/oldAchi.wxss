@@ -1,0 +1,2 @@
+@import '../schoolDate/schoolDate.wxss';
+@import '../achievement/achievement.wxss'

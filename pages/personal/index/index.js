@@ -29,7 +29,7 @@ Page({
 		var _this=this;
 		wx.showModal({
 			title: '提示',
-			content: '确定要解除绑定嘛，不绑定URP则只可用部分功能',
+			content: '确定要解除绑定嘛，不绑定URP则只可用部分功能,解除后可以重新绑定',
 			confirmText:'解除',
 			confirmColor:'#d98e92',
 			success({confirm,cancel}){

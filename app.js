@@ -7,6 +7,7 @@ App({
         userInfo: {
 
         },
-        avatarSeed:""
+        avatarSeed:"",
+        schoolDate:[]
     }
 })

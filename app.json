@@ -8,6 +8,7 @@
         "pages/function/newsList/newsList",
         "pages/function/newsDetail/newsDetail",
         "pages/function/address/address",
+        "pages/function/schoolDate/schoolDate",
         "pages/personal/index/index",
         "pages/personal/info/info",
         "pages/personal/feedback/feedback",

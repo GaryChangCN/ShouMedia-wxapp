@@ -1,0 +1,23 @@
+<import src="../../../template/tools/tools.wxml" />
+<view class="school-c">
+    <picker bindchange="handlePickerChange" value="0" range="{{schoolDate}}" range-key="title" class="picker">
+        <view class="head">
+            <text>{{"<"}}</text>
+            <view>{{tab}}</view>
+            <text>{{">"}}</text> {{schoolDate[index]}}
+        </view>
+    </picker>
+	<view class="pic-c">
+		<image
+			wx:for="{{pic}}"
+			wx:key="{{index}}"
+			src="{{item}}"
+			class="pic"
+			mode="aspectFit"
+			data-index="{{index}}"
+			bindtap="previewPic"
+		>
+		</image>
+	</view>
+	<template is="feedback" data="{{tips:'校历显示错误'}}"/>
+</view>

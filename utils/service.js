@@ -14,12 +14,33 @@ module.exports = {
     fetchCurriculum,
     fetchInfoPlus,
     fetchBindUrp,
+    fetchSchoolDate,
     bindUrp,
     unBindUrp
 }
 
-//解除绑定urp
+//获取校历
 
+function fetchSchoolDate(params) {
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/schoolDate`,
+            success(res){
+                var {err,data}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError)
+            }
+        });
+    });
+}
+
+//解除绑定urp
 function unBindUrp() {
     return new Promise((resolve,reject)=>{
         wx.request({

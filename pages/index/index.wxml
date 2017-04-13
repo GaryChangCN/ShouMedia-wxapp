@@ -23,10 +23,10 @@
             <i class="iconfont icon-xinxi"></i>
             <text>消息通知</text>
         </navigator>
-        <view class="function xiaoli" hover="true" hover-class="function-hover">
+        <navigator url="../function/schoolDate/schoolDate" class="function xiaoli" hover="true" hover-class="function-hover">
             <i class="iconfont icon-rili"></i>
             <text>校历</text>
-        </view>
+        </navigator>
         <navigator url="../function/curriculum/curriculum" class="function kechengbiao {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-kechengbiao"></i>
             <text>课程表</text>

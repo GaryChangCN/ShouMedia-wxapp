@@ -8,6 +8,7 @@ App({
 
         },
         avatarSeed:"",
-        schoolDate:[]
+        schoolDate:[],
+        examDate:[]
     }
 })

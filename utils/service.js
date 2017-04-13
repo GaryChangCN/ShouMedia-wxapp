@@ -7,6 +7,7 @@ module.exports = {
     updateAvatar,
     getAvatar,
     searchAddress,
+    fetchExamDate,
     fetchNewsList,
     fetchNewsDetail,
     fetchNewAchievement,
@@ -19,9 +20,34 @@ module.exports = {
     unBindUrp
 }
 
-//获取校历
+//获取考试安排
+function fetchExamDate() {
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/wxapp/examDate`,
+            header: {
+                'Content-Type': 'x-www-form-urlencoded'
+            },
+            data:{
+                thirdSession:getLocalThirdSession()
+            },
+            success: function(res) {
+                var {err,data}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError);
+            }
+        })
+    });
+}
 
-function fetchSchoolDate(params) {
+//获取校历
+function fetchSchoolDate() {
     return new Promise((resolve,reject)=>{
         wx.request({
             url: `${url}/api/schoolDate`,

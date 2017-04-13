@@ -27,15 +27,15 @@
             <i class="iconfont icon-rili"></i>
             <text>校历</text>
         </navigator>
-        <navigator url="../function/curriculum/curriculum" class="function kechengbiao {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <navigator url="{{bindUrp?'../function/curriculum/curriculum':'../login/login'}}" class="function kechengbiao {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-kechengbiao"></i>
             <text>课程表</text>
         </navigator>
-        <navigator url="../function/achievement/achievement" class="function chengjidan {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <navigator url="{{bindUrp?'../function/achievement/achievement':'../login/login'}}" class="function chengjidan {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-tubiaozhizuomoban"></i>
             <text>成绩单</text>
         </navigator>
-        <navigator url="../personal/index/index" class="function gerenzhongxin  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover ">
+        <navigator url="{{bindUrp?'../personal/index/index':'../login/login'}}" class="function gerenzhongxin  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover ">
             <i class="iconfont icon-ren"></i>
             <text>个人中心</text>
         </navigator>
@@ -47,13 +47,13 @@
             <i class="iconfont icon-xinwen"></i>
             <text>新闻公告</text>
         </navigator>
-        <navigator url="../function/project/project" class="function fanganwanchengdu  {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <navigator url="../function/project/project" class="function fanganwanchengdu" hover="true" hover-class="function-hover">
             <i class="iconfont icon-wendangchaxun"></i>
             <text>课程查询</text>
         </navigator>
-        <view class="function kaoshianpai {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <navigator url="{{bindUrp?'../function/examDate/examDate':'../login/login'}}" class="function kaoshianpai {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-xingjikaoshi"></i>
             <text>考试安排</text>
-        </view>
+        </navigator>
     </view>
 </view>

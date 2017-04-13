@@ -48,10 +48,10 @@
 	<view class="item-coll">
 		<navigator url="../feedback/feedback" class="item">
 			<view class="a1">
-				<i class="iconfont icon-fankui pre"></i>
+				<i class="iconfont icon-my-score pre"></i>
 			</view>
 			<view class="a2">
-				<text>反馈</text>
+				<text>历史成绩</text>
 			</view>
 			<view class="a3"></view>
 			<view class="a4">
@@ -60,10 +60,10 @@
 		</navigator>
 		<navigator url="../about/about" class="item">
 			<view class="a1">
-				<i class="iconfont icon-guanyu pre"></i>
+				<i class="iconfont icon-jisuan pre"></i>
 			</view>
 			<view class="a2">
-				<text>关于</text>
+				<text>绩点计算</text>
 			</view>
 			<view class="a3"></view>
 			<view class="a4">

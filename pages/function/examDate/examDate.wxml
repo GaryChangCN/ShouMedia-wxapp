@@ -1,0 +1,28 @@
+<import src="../../../template/tools/tools.wxml" />
+
+<scroll-view scroll-x="true" class="exam-c">
+    <view class="exam">
+        <view class="tr th">
+            <view class="td">考试名</view>
+            <view class="td">校区</view>
+            <view class="td">教学楼</view>
+            <view class="td">教室</view>
+            <view class="td">课程名</view>
+            <view class="td">周次</view>
+            <view class="td">星期</view>
+			<view class="td">时间</view>
+			<view class="td">座位号</view>
+			<view class="td">准考证</view>
+        </view>
+        <view class="tr" wx:for="{{examDate}}" wx:for-index="i" wx:key="{{i}}">
+            <view class="td" wx:for="{{item}}" wx:for-index="j" wx:key="{{j}}">
+                {{item}}
+            </view>
+        </view>
+    </view>
+	<text class="placeholderer" wx:if="{{!examDate.length}}">最近没有考试</text>
+    <view bindtap="refresh">
+		<template is="refresh" data="{{animationData,refreshDisabled}}" />
+    </view>
+    <template is="feedback" data="{{tips:'考试安排和urp上不同'}}"/>
+</scroll-view>

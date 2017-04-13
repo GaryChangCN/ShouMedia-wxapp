@@ -71,4 +71,42 @@
 			</view>
 		</navigator>
 	</view>
+	<view class="item-coll">
+		<navigator url="../feedback/feedback" class="item">
+			<view class="a1">
+				<i class="iconfont icon-fankui pre"></i>
+			</view>
+			<view class="a2">
+				<text>反馈</text>
+			</view>
+			<view class="a3"></view>
+			<view class="a4">
+				<i class="iconfont icon-youyou"></i>
+			</view>
+		</navigator>
+		<navigator url="../about/about" class="item">
+			<view class="a1">
+				<i class="iconfont icon-guanyu pre"></i>
+			</view>
+			<view class="a2">
+				<text>关于</text>
+			</view>
+			<view class="a3"></view>
+			<view class="a4">
+				<i class="iconfont icon-youyou"></i>
+			</view>
+		</navigator>
+		<view url="../feedback/feedback" class="item" bindtap="handleLogout">
+			<view class="a1">
+				<i class="iconfont icon-zhuxiao pre"></i>
+			</view>
+			<view class="a2">
+				<text>解除绑定</text>
+			</view>
+			<view class="a3"></view>
+			<view class="a4">
+				<i class="iconfont icon-youyou"></i>
+			</view>
+		</view>
+	</view>
 </view>

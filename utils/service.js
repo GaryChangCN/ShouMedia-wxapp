@@ -14,7 +14,36 @@ module.exports = {
     fetchCurriculum,
     fetchInfoPlus,
     fetchBindUrp,
-    bindUrp
+    bindUrp,
+    unBindUrp
+}
+
+//解除绑定urp
+
+function unBindUrp() {
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url:`${url}/api/wxapp/unBindUrp`,
+            method:"DELETE",
+            header:{
+                'Content-Type':'application/json'
+            },
+            data:{
+                thirdSession:getLocalThirdSession()
+            },
+            success(res){
+                var {data,err}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError);
+            }
+        });
+    });
 }
 
 // 搜索课程

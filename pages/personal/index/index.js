@@ -1,5 +1,5 @@
 var {showToastError,checkMemoryBindUrp,navigateToLogin,showToastSuccess}=require("../../../utils/wxApp");
-var {getAvatar,updateAvatar}=require('../../../utils/service');
+var {getAvatar,updateAvatar,unBindUrp}=require('../../../utils/service');
 var blockies=require("../../../utils/blockies");
 Page({
 	data: {
@@ -25,6 +25,20 @@ Page({
 	onReady(){
 		this.fetchAvatar()
 	},
+	handleLogout(){
+		var _this=this;
+		wx.showModal({
+			title: '提示',
+			content: '确定要解除绑定嘛，不绑定URP则只可用部分功能',
+			confirmText:'解除',
+			confirmColor:'#d98e92',
+			success({confirm,cancel}){
+				if(confirm){
+					_this.fetchUnbindUrp();
+				}
+			}
+		});
+	},
 	handleChangeSeed(e){
 		var {value}=e.detail;
 		this.setData({seedValue:value});
@@ -36,7 +50,7 @@ Page({
 		if(!value){
 			var {seed,seedValue}=this.data;
 			if(seed!==seedValue){
-				this.thisUpdateAvatar();
+				this.fetchUpdateAvatar();
 			}
 		}
 	},
@@ -51,7 +65,7 @@ Page({
 			_this.updateIdenticon(seed);
 		});
 	},
-	thisUpdateAvatar(){
+	fetchUpdateAvatar(){
 		var {seedValue}=this.data;
 		wx.showNavigationBarLoading();
 		var _this=this;
@@ -64,6 +78,21 @@ Page({
 			wx.hideNavigationBarLoading();
 			showToastError(err);
 		});
+	},
+	fetchUnbindUrp(){
+		unBindUrp().then(({pass})=>{
+			if(!pass){
+				showToastSuccess("解除成功");
+				wx.navigateTo({
+					url: '../../index/index'
+				});
+				getApp().globalData.memoryBindUrp=false;
+			}else{
+				showToastError("解除失败");
+			}
+		}).catch((err)=>{
+			showToastError(err);
+		})
 	},
 	updateIdenticon(seed){
         var context=blockies(

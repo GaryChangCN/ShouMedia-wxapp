@@ -22,7 +22,7 @@
         "navigationBarBackgroundColor": "#66cccc",
         "navigationBarTitleText": "海大新媒体",
         "navigationBarTextStyle": "white",
-        "backgroundColor": "#eee",
+        "backgroundColor": "#ffffff",
         "backgroundTextStyle": "light",
         "enablePullDownRefresh": false
     },

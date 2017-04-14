@@ -1,6 +1,6 @@
 <view class="msg-c">
-	<scroll-view scroll-x="true" class="item-c" wx:for="{{msgList}}" wx:key="{{key}}" data-index="{{index}}" bindtouchmove="handleSlide">
-		<view class="item">
+	<view class="item-c" wx:for="{{msgList}}" wx:key="{{key}}" data-index="{{index}}" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
+		<view class="item {{move[index]?'item-move':''}}">
 			<view class="tag">{{item.read?'':'新'}}通知</view>
 			<view class="title">
 				{{item.title}}
@@ -16,8 +16,8 @@
 				</view>
 			</view>
 		</view>
-		<view class="item-back">
-			<view class="as-read">
+		<view class="item-b">
+			<view class="as-read control">
 				<view>
 					<i class="iconfont icon-yidu"></i>
 				</view>
@@ -25,7 +25,7 @@
 					已读
 				</view>
 			</view>
-			<view class="to-del">
+			<view class="to-del control">
 				<view>
 					<i class="iconfont icon-shanchu"></i>
 				</view>
@@ -34,5 +34,5 @@
 				</view>
 			</view>
 		</view>
-	</scroll-view>
+	</view>
 </view>

@@ -1,0 +1,102 @@
+.msg-c{
+	width: 100%;
+	flex-direction: column;
+	background: #eee;
+}
+.item-c{
+	width: 750rpx;
+	position: relative;
+	background: #fff;
+	margin-top: 30rpx;
+	height: 220rpx;
+}
+.item{
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	flex-direction: column;
+	padding: 20rpx;
+	padding-bottom: 0;
+	z-index: 20;
+	background: inherit;
+}
+.tag{
+	font-weight: 500;
+	height: 40rpx;
+	align-items: center;
+	font-size: 30rpx;
+}
+.title{
+	font-size: 27rpx;
+	line-height: 30rpx;
+	width: 100%;
+	height: 100rpx;
+	align-items: center;
+	color: #222;
+	border-bottom: 1px solid lightgrey;
+}
+.hr{
+	width: 100%;
+	height: 0px;
+}
+.detail{
+	width: 100%;
+	height: 60rpx;
+	justify-content: flex-end;
+	font-size: 22rpx;
+	align-items: center;
+}
+.a,.b,.c{
+	height: inherit;
+	align-items: center;
+	justify-content: center;
+}
+.point{
+	width: 15rpx;
+	height: 15rpx;
+	border-radius: 50%;
+	background: #66cccc;
+}
+.a,.c{
+	width: 30rpx;
+}
+.b{
+	width: 100rpx;
+	margin-left: 10rpx;
+}
+.iconfont{
+	font-size: 15rpx;
+}
+.item-c:last-child{
+	margin-bottom: 30rpx;
+}
+
+.item-back{
+	width: 100%;
+	height: 220rpx;
+	justify-content: flex-end;
+	background: inherit;
+	position: absolute;
+}
+.as-read,.to-del{
+	width: 120rpx;
+	height: inherit;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #fff;
+}
+.as-read{
+	background: #66cccc;
+}
+.to-del{
+	background: orangered;
+}
+.item-back .iconfont{
+	font-size: 40rpx;
+}
+.tips{
+	font-size: 25rpx;
+	margin-top: 30rpx;
+	margin-bottom: -30rpx;
+}

@@ -18,7 +18,36 @@ module.exports = {
     fetchBindUrp,
     fetchSchoolDate,
     bindUrp,
-    unBindUrp
+    unBindUrp,
+    fetchMsg
+}
+
+//获取消息通知
+function fetchMsg(method="GET",msgId="") {
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/wxapp/msg`,
+            method:method,
+            header: {
+                'Content-Type': 'x-www-form-urlencoded'
+            },
+            data:{
+                thirdSession:getLocalThirdSession(),
+                msgId
+            },
+            success(res) {
+                var {err,data}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError)
+            }
+        });
+    });
 }
 
 //获取历史成绩

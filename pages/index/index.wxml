@@ -19,7 +19,7 @@
         </navigator>
     </view>
     <view class="function-c">
-        <navigator url="" class="function yikatong {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
+        <navigator url="{{bindUrp?'../personal/msg/msg':'../login/login'}}" class="function yikatong {{bindUrp?'':'unbindurp'}}" hover="true" hover-class="function-hover">
             <i class="iconfont icon-xinxi"></i>
             <text>消息通知</text>
         </navigator>

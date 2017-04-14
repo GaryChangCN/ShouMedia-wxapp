@@ -14,7 +14,7 @@
         <view class="achi-item" wx:for="{{achievementList}}" wx:for-index="i" wx:key="{{i}}">
             <view class="achi-item-header">
                 <text>{{item.kcm}}</text>
-                <text>{{visible?item.cj:'...'}}</text>
+                <text>{{visible?item.cj||'未出':'***'}}</text>
             </view>
             <view class="achi-item-panel">
                 <view>
@@ -39,7 +39,7 @@
                 </view>
                 <view>
                     <text>成绩</text>
-                    <text>{{visible?item.cj:'...'}}</text>
+                    <text>{{visible?item.cj||'未出':'***'}}</text>
                 </view>
             </view>
         </view>

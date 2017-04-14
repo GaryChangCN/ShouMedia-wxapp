@@ -1,4 +1,4 @@
-var {showToastError,wxAuth,navigateToLogin}=require('../../utils/wxApp');
+var {showToastError,wxAuth,navigateToLogin,checkMemoryBindUrp}=require('../../utils/wxApp');
 var {fetchBindUrp,fetchInfoPlus,getAvatar}=require('../../utils/service');
 var blockies=require("../../utils/blockies");
 Page({
@@ -8,7 +8,7 @@ Page({
         bindUrp:true
     },
     onLoad() {
-        console.log("显示主页");
+        console.log("加载主页");
         var {globalData}=getApp();
         var _this=this;
         wxAuth().then(({wxAuth})=>{

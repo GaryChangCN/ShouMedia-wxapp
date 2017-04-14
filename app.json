@@ -14,7 +14,8 @@
         "pages/personal/index/index",
         "pages/personal/info/info",
         "pages/personal/feedback/feedback",
-        "pages/personal/about/about"
+        "pages/personal/about/about",
+        "pages/personal/msg/msg"
     ],
     "window": {
         "backgroundTextStyle": "light",

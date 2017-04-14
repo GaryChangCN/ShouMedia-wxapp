@@ -1,0 +1,38 @@
+<view class="msg-c">
+	<scroll-view scroll-x="true" class="item-c" wx:for="{{msgList}}" wx:key="{{key}}" data-index="{{index}}" bindtouchmove="handleSlide">
+		<view class="item">
+			<view class="tag">{{item.read?'':'新'}}通知</view>
+			<view class="title">
+				{{item.title}}
+			</view>
+			<view class="hr"></view>
+			<view class="detail">
+				<view class="a" hidden="{{item.read}}">
+					<view class="point"></view>
+				</view>
+				<view class="b">查看详情</view>
+				<view class="c">
+					<i class="iconfont icon-youyou"></i>
+				</view>
+			</view>
+		</view>
+		<view class="item-back">
+			<view class="as-read">
+				<view>
+					<i class="iconfont icon-yidu"></i>
+				</view>
+				<view class="tips">
+					已读
+				</view>
+			</view>
+			<view class="to-del">
+				<view>
+					<i class="iconfont icon-shanchu"></i>
+				</view>
+				<view class="tips">
+					删除
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</view>

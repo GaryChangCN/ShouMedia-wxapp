@@ -19,22 +19,35 @@ module.exports = {
     fetchSchoolDate,
     bindUrp,
     unBindUrp,
-    fetchMsg
+    fetchMsg,
+    fetchMsgDetail
+}
+
+function fetchMsgDetail(msgId){
+    return new Promise((resolve,reject)=>{
+        wx.request({
+            url: `${url}/api/wxapp/msgDetail?&msgId=${msgId}`,
+            success(res) {
+                var {err,data}=res.data;
+                if(err){
+                    reject(netError);
+                }else{
+                    resolve(data);
+                }
+            },
+            fail(){
+                reject(netError)
+            }
+        });
+    });
 }
 
 //获取消息通知
 function fetchMsg(method="GET",msgId="") {
     return new Promise((resolve,reject)=>{
         wx.request({
-            url: `${url}/api/wxapp/msg`,
+            url: `${url}/api/wxapp/msg?thirdSession=${getLocalThirdSession()}&msgId=${msgId}`,
             method:method,
-            header: {
-                'Content-Type': 'x-www-form-urlencoded'
-            },
-            data:{
-                thirdSession:getLocalThirdSession(),
-                msgId
-            },
             success(res) {
                 var {err,data}=res.data;
                 if(err){

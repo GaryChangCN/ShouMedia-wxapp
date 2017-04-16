@@ -7,11 +7,37 @@ Page({
         name:"姓名",
         bindUrp:true
     },
-    onLoad() {
+    onLoad(){
         console.log("加载主页");
+        var _this=this;
+        this.thisFetchBindUrp().then((data)=>{
+            return _this.thisFetchUserInfo(data);
+        }).catch((err)=>{
+            console.error(err);
+            showToastError(err);
+        })
+    },
+    onShow(){
+        console.log("显示主页");
+         if(checkMemoryBindUrp()){
+            this.updateFromMemory();
+        }else{
+            this.setData({bindUrp:false});
+        }
+    },
+    updateFromMemory(){
+        var {avatarSeed,userInfo}=getApp().globalData;
+        this.updateIdenticon(avatarSeed);
+        var {username,name}=userInfo;
+        this.setData({
+            username,name,
+            bindUrp:true
+        });
+    },
+    thisFetchBindUrp(){
         var {globalData}=getApp();
         var _this=this;
-        wxAuth().then(({wxAuth})=>{
+        return wxAuth().then(({wxAuth})=>{
             if(wxAuth){
                 console.log("已经有微信登录授权");
                 console.log("开始获取bindUrp");
@@ -31,31 +57,34 @@ Page({
                 _this.setData({bindUrp:false});
                 return false;
             }
-        }).then((data)=>{
-            if(!data){
-                return false;
-            }
-            var {ret,pass}=data;
-            console.log("获取用户信息成功");
-            if(!pass){
-                showToastError("urp密码错误");
-                navigateToLogin();
-                return false;
-            }
-            wx.setStorage({
-                key: 'userInfo',
-                data: JSON.stringify(ret)
-            });
-            globalData.userInfo=ret;
-            var {username,name}=ret;
-            _this.setData({
-                username,
-                name
-            });
-            console.log("储存用户信息到storage和globalData");
-            console.log("开始获取头像");
-            return getAvatar();
-        }).then((data)=>{
+        });
+    },
+    thisFetchUserInfo(data){
+        var {globalData}=getApp();
+        var _this=this;
+        if(!data){
+            return false;
+        }
+        var {ret,pass}=data;
+        console.log("获取用户信息成功");
+        if(!pass){
+            showToastError("urp密码错误");
+            navigateToLogin();
+            return false;
+        }
+        wx.setStorage({
+            key: 'userInfo',
+            data: JSON.stringify(ret)
+        });
+        globalData.userInfo=ret;
+        var {username,name}=ret;
+        _this.setData({
+            username,
+            name
+        });
+        console.log("储存用户信息到storage和globalData");
+        console.log("开始获取头像");
+        return getAvatar().then((data)=>{
             console.log(data);
             if(!data){
                 return false;
@@ -64,17 +93,47 @@ Page({
             var {avatar}=data;
             globalData.avatarSeed=avatar;
             _this.updateIdenticon(avatar);
-        }).catch((err)=>{
-            if(typeof err =='string'){
-                showToastError(err);
-            }else{
-                console.log(err);
-            }
-        });
-    },
-    onShow(){
-        var {avatarSeed}=getApp().globalData;
-        this.updateIdenticon(avatarSeed);        
+        })
+        // .then((data)=>{
+        //     if(!data){
+        //         return false;
+        //     }
+        //     var {ret,pass}=data;
+        //     console.log("获取用户信息成功");
+        //     if(!pass){
+        //         showToastError("urp密码错误");
+        //         navigateToLogin();
+        //         return false;
+        //     }
+        //     wx.setStorage({
+        //         key: 'userInfo',
+        //         data: JSON.stringify(ret)
+        //     });
+        //     globalData.userInfo=ret;
+        //     var {username,name}=ret;
+        //     _this.setData({
+        //         username,
+        //         name
+        //     });
+        //     console.log("储存用户信息到storage和globalData");
+        //     console.log("开始获取头像");
+        //     return getAvatar();
+        // }).then((data)=>{
+        //     console.log(data);
+        //     if(!data){
+        //         return false;
+        //     }
+        //     console.log("获取头像成功");
+        //     var {avatar}=data;
+        //     globalData.avatarSeed=avatar;
+        //     _this.updateIdenticon(avatar);
+        // }).catch((err)=>{
+        //     if(typeof err =='string'){
+        //         showToastError(err);
+        //     }else{
+        //         console.log(err);
+        //     }
+        // });
     },
     onReady(){
         this.updateIdenticon("iconbygar");   

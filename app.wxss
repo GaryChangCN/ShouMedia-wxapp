@@ -38,6 +38,7 @@ view {
     font-size: 30rpx;
     align-items: center;
     justify-content: center;
+    background: #fff;
     display: flex;
 }
 

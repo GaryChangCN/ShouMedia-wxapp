@@ -1,4 +1,4 @@
-var { fetchMsg } = require('../../../utils/service');
+var { fetchMsg ,fetchMsgDetail} = require('../../../utils/service');
 var { showToastError, showToastSuccess, checkMemoryBindUrp, navigateToLogin } = require('../../../utils/wxApp');
 Page({
     data: {
@@ -7,8 +7,30 @@ Page({
         startX: "",
 		move:[]
     },
-    onLoad() {
+    onShow() {
         this.fetch();
+    },
+    handleControl(e){
+        var { index,method } = e.currentTarget.dataset;
+        var {msgList,move}=this.data;
+        var {msgId}=msgList[index];
+        move[index]=false;
+        this.setData({move});
+        this.fetch(method,msgId);
+    },
+    handleOpen(e){
+        var { index,method } = e.currentTarget.dataset;
+        var {msgList,move}=this.data;
+        var {msgId,detail}=msgList[index];
+        if(move[index]){
+            move[index]=false;
+            this.setData({move});
+        }else{
+            this.fetch("PUT",msgId);
+            if(detail){
+                this.fetchDetail(msgId);
+            }
+        }
     },
     handleTouchStart(e) {
         var { index } = e.currentTarget.dataset;
@@ -38,6 +60,19 @@ Page({
 			}
 		}
     },
+    fetchDetail(msgId){
+        var _this=this;
+        fetchMsgDetail(msgId).then(({title,content,tag})=>{
+            wx.showModal({
+                title,
+                content,
+                showCancel:false,
+                confirmColor:"#66cccc"
+            })
+		}).catch((err)=>{
+			showToastError(err);
+		})
+    },
     fetch(method = "GET", msgId) {
         var _this = this;
         fetchMsg(method, msgId).then(({ pass, msgList, modify }) => {
@@ -46,12 +81,15 @@ Page({
                     _this.setData({ msgList });
                 } else if (method == "DELETE") {
                     showToastSuccess("已删除");
+                    _this.fetch("GET");                    
+                }else if(method=="PUT"){
+                    _this.fetch("GET");
                 }
             } else {
                 navigateToLogin();
             }
         }).catch((err) => {
             showToastError(err);
-        })
+        });
     }
 })

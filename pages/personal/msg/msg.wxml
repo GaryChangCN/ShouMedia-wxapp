@@ -1,31 +1,32 @@
 <view class="msg-c">
-	<view class="item-c" wx:for="{{msgList}}" wx:key="{{key}}" data-index="{{index}}" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
-		<view class="item {{move[index]?'item-move':''}}">
-			<view class="tag">{{item.read?'':'新'}}通知</view>
+	<text class="placeholderer" wx:if="{{!msgList.length}}">当前没有消息</text>
+	<view class="item-c" wx:for="{{msgList}}" wx:key="{{key}}" data-index="{{index}}" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd"
+	bindtap="handleOpen">
+		<view class="item {{move[index]?'item-move':''}} {{item.read?'has-read':''}}">
+			<view class="tag">{{item.read?'':'新'}}{{item.detail?'推送':'通知'}}</view>
 			<view class="title">
 				{{item.title}}
 			</view>
-			<view class="hr"></view>
 			<view class="detail">
 				<view class="a" hidden="{{item.read}}">
 					<view class="point"></view>
 				</view>
-				<view class="b">查看详情</view>
+				<view class="b">{{item.detail?"查看详情":"无详情"}}</view>
 				<view class="c">
 					<i class="iconfont icon-youyou"></i>
 				</view>
 			</view>
 		</view>
 		<view class="item-b">
-			<view class="as-read control">
+			<view class="as-read control" data-method="PUT" data-index="{{index}}" catchtap="handleControl">
 				<view>
 					<i class="iconfont icon-yidu"></i>
 				</view>
-				<view class="tips">
+				<view class="tips" >
 					已读
 				</view>
 			</view>
-			<view class="to-del control">
+			<view class="to-del control" data-method="DELETE" data-index="{{index}}" catchtap="handleControl">
 				<view>
 					<i class="iconfont icon-shanchu"></i>
 				</view>

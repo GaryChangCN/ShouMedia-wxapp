@@ -32,7 +32,7 @@
 				<i class="iconfont icon-youyou"></i>
 			</view>
 		</navigator>
-		<navigator url="../info/info" class="item">
+		<navigator url="../msg/msg" class="item">
 			<view class="a1">
 				<i class="iconfont icon-xiaoxitongzhi pre"></i>
 			</view>

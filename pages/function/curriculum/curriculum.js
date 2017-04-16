@@ -48,7 +48,9 @@ Page({
         this.setData({
             refreshDisabled: true
         });
+        showToastError("获取中");
         fetchCurriculum(type).then(({ret,pass}) => {
+            wx.hideToast();
             if(pass){
                 _this.setData({
                     curriculumList:ret,

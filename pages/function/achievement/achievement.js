@@ -61,15 +61,18 @@ Page({
         this.setData({
             refreshDisabled: true
         });
+        showToastError("获取中");        
         if(type=="cache"){
             //模拟请求
             return setTimeout(function() {
                 _this.setData({
                     refreshDisabled:false
                 });
+                wx.hideToast();
             }, 1000);
         }
         fetchNewAchievement("cache").then(({ret,pass}) => {
+            wx.hideToast();            
             if(pass){
                 _this.setData({
                     achievementList:ret,

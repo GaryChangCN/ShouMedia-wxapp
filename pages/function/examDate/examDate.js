@@ -41,12 +41,15 @@ Page({
     },
 	fetch(type){
 		var _this=this;
+		showToastError("获取中");
 		if(type=="cache"){
 			setTimeout(function () {
 				_this.setData({refreshDisabled:false});
+				wx.hideToast();
 			}, 1000);
 		}else{
 			fetchExamDate().then(({ret,pass})=>{
+				wx.hideToast();
 				if(pass){
 					_this.setData({
 						examDate:ret,

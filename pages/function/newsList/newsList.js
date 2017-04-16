@@ -37,7 +37,9 @@ Page({
     fetch() {
         var _this = this;
         var { tab, pn, list } = this.data;
+        showToastError("获取中");
         fetchNewsList(tab, pn).then(function(data){
+            wx.hideToast();
             var fetchList = data.list;
             if (fetchList.length == 0) {
                 showToastError("没有更多了");

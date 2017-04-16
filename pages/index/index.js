@@ -5,8 +5,7 @@ Page({
     data: {
         username:"学号",
         name:"姓名",
-        bindUrp:true,
-        onLoad:false
+        bindUrp:true
     },
     onLoad(){
         console.log("加载主页");
@@ -23,20 +22,12 @@ Page({
     onShow(){
         console.log("显示主页");
         if(checkMemoryBindUrp()){
-            this.updateFromMemory();
+            var {avatarSeed,userInfo}=getApp().globalData;
+            console.log("更新头像");
+            this.updateIdenticon(avatarSeed);
         }else{
             this.setData({bindUrp:false});
         }
-    },
-    updateFromMemory(){
-        var {avatarSeed,userInfo}=getApp().globalData;
-        console.log("更新头像");
-        this.updateIdenticon(avatarSeed);
-        var {username,name}=userInfo;
-        this.setData({
-            username,name,
-            bindUrp:true
-        });
     },
     thisFetchBindUrp(){
         var {globalData}=getApp();

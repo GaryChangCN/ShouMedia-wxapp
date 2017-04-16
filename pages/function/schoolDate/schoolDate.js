@@ -40,7 +40,9 @@ Page({
 	},
 	fetch(){
 		var _this=this;
+		showToastError("获取中");
 		fetchSchoolDate().then(({schoolDate})=>{
+			wx.hideToast();
 			var firstItem=schoolDate[0];
 			_this.setData({
 				schoolDate,

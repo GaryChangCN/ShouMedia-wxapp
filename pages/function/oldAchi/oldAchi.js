@@ -16,7 +16,9 @@ Page({
 	},
 	fetch(type,index=0){
 		var _this=this;
+		showToastError("获取中");
 		fetchOldAchi(type).then(({pass,ret})=>{
+			wx.hideToast();
 			if(pass){
 				var list=_this.convert(ret);
 				var selectList=list[index];

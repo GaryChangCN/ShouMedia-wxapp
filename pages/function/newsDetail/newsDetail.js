@@ -10,7 +10,9 @@ Page({
 		var {url}=query;
 		this.setData({url});
 		var _this=this;
+		showToastError("获取中");
 		fetchNewsDetail(url).then((data)=>{
+			wx.hideToast();
 			_this.setData({
 				data
 			});

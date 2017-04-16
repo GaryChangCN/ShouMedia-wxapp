@@ -2,7 +2,7 @@
 	width: 100%;
 	flex-direction: column;
 }
-.news-c>.title{
+.title{
 	width: 100%;
 	font-size: 35rpx;
 	align-items: center;
@@ -10,20 +10,20 @@
 	margin-top: 30rpx;
 	justify-content: center;
 }
-.news-c>.meta{
+.meta{
 	margin-top: 20rpx;
 	width: 100%;
 	font-size: 20rpx;
 	justify-content: center;
 }
-.news-c>.content{
+.content{
 	width: 100%;
 	margin-top: 20rpx;
 	padding: 0 20rpx;
 	flex-direction: column;
 	align-items: center;
 }
-.news-c>.content view{
+.content view{
 	width: 100%;
 	margin-bottom: 10rpx;
 	font-size: 25rpx;

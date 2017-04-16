@@ -80,7 +80,7 @@ Page({
         console.log("储存用户信息到storage和globalData");
         console.log("开始获取头像");
         return getAvatar().then((data)=>{
-            console.log(data);
+            wx.hideToast();
             if(!data){
                 return false;
             }

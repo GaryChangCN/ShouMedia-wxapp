@@ -30,7 +30,9 @@
                     bindinput="handleChange"
                     bindfocus="handleFocus"
                     bindblur="handleBlur"                
-                    class="{{errors.password?'errors':''}}"            confirm-type="send"    
+                    class="{{errors.password?'errors':''}}"
+                    confirm-type="send"    
+                    bindconfirm="handleSubmit"
                 />
                 <text class="err-msg" hidden="{{!errors.password}}">{{errors.password}}</text>
             </div>

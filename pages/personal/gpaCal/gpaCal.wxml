@@ -1,0 +1,60 @@
+<import src="../../../template/tools/tools" />
+
+<view class="gpa-c">
+	<view class="gpa-control">
+		<view class="new-achi">
+			<view class="import" bindtap="importAchi">
+				导入
+			</view>
+			<view class="average">
+				平均学分绩点: {{averageGpa}}
+			</view>
+			<view class="add" bindtap="addItem">
+				<i class="iconfont icon-addplus"></i>
+			</view>
+		</view>
+	</view>
+	<view class="item-c">
+		<view class="item th">
+			<view class="a">
+				<view class="a2">学分</view>
+			</view>
+			<view class="b">
+				<view class="b1">成绩</view>
+			</view>
+			<view class="c">
+				<view class="c1">绩点</view>
+			</view>
+			<view class="d">
+				<view class="d1">操作</view>
+			</view>
+		</view>
+		<view class="item tr" wx:for="{{achievementList}}" wx:key="{{index}}">
+			<view class="a">
+				<view class="a1" hidden="{{item.kcm.length>0}}">{{item.kcm}}</view>
+				<view class="a2">
+					<input data-index="{{index}}" data-item="0" class="{{item.active[0]?'active':''}}" bindfocus="handleFocus" bindblur="handleBlur" type="digit" value="{{item.xf}}" bindinput="handleChange"/>
+				</view>
+			</view>
+			<view class="b">
+				<view class="b1">
+					<input data-index="{{index}}" data-item="1" class="{{item.active[1]?'active':''}}" bindfocus="handleFocus" bindblur="handleBlur" type="digit" value="{{item.cj}}" bindinput="handleChange"/>				
+				</view>
+			</view>
+			<view class="c">
+				<view class="c1">{{item.gpa}}</view>
+			</view>
+			<view class="d">
+				<view class="d1" data-index="{{index}}" bindtap="deleteItem">
+					<i class="iconfont icon-shanchu"></i>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="tips">
+		绩点计算以及平均学分绩点算法来自于《学生手册》p101页，导入功能是导入当前成绩，会覆盖之前添加的成绩。
+	</view>
+	<template is="feedback" data="{{tips:'计算有误'}}"/>
+</view>
+
+

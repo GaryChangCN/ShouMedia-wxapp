@@ -15,7 +15,8 @@
         "pages/personal/info/info",
         "pages/personal/feedback/feedback",
         "pages/personal/about/about",
-        "pages/personal/msg/msg"
+        "pages/personal/msg/msg",
+        "pages/personal/gpaCal/gpaCal"
     ],
     "window": {
         "backgroundTextStyle": "light",

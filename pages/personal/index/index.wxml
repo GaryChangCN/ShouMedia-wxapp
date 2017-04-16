@@ -59,7 +59,7 @@
 				<i class="iconfont icon-youyou"></i>
 			</view>
 		</navigator>
-		<navigator url="../about/about" class="item">
+		<navigator url="../gpaCal/gpaCal" class="item">
 			<view class="a1">
 				<i class="iconfont icon-jisuan pre"></i>
 			</view>

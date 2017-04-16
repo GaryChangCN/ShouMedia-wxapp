@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'iconfont';
-    src: url('https://at.alicdn.com/t/font_fkh7b5yoczyqfr.ttf') format('truetype');
+    src: url('https://at.alicdn.com/t/font_elub3quqtio4j9k9.ttf') format('truetype');
 }
 
 .iconfont {
@@ -10,7 +10,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-addplus:before { content: "\e625"; }
 .icon-yidu:before { content: "\e624"; }
 
 .icon-shanchu:before { content: "\e600"; }

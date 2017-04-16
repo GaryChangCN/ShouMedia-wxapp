@@ -33,11 +33,9 @@ Page({
     handleSubmit() {
         var _this = this;
         var { username, password } = this.data;
-        console.log("发送验证绑定urp请求");
         bindUrp(username,password).then((data)=>{
             var {pass}=data;
             if(pass){
-                console.log("绑定成功，跳转到首页");
                 wx.redirectTo({
                     url: '../index/index'
                 });
@@ -45,7 +43,6 @@ Page({
                 showToastError("密码错误");
             }
         }).catch((err)=>{
-            console.log(err);
             showToastError(err);
         });
     },

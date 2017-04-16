@@ -8,17 +8,14 @@ Page({
         bindUrp: true
     },
     onLoad() {
-        console.log("加载主页");
         var _this = this;
         showToastError("加载中", 500);
         this.setData({ onLoad: true })
         this.sloveChain();
     },
     onShow() {
-        console.log("显示主页");
         if (checkMemoryBindUrp()) {
             var { avatarSeed, userInfo } = getApp().globalData;
-            console.log("更新头像");
             this.updateIdenticon(avatarSeed);
         } else {
             this.setData({ bindUrp: false });
@@ -29,21 +26,16 @@ Page({
         var _this = this;
         wxAuth().then(({ wxAuth }) => {
             if (wxAuth) {
-                console.log("已经有微信登录授权");
-                console.log("开始获取bindUrp");
                 return fetchBindUrp();
             } else {
                 throw "无微信授权";
             }
         }).then(({ bindUrp }) => {
             if (bindUrp) {
-                console.log("已经绑定urp");
                 globalData.memoryBindUrp = true;
                 _this.setData({ bindUrp: true });
-                console.log("开始获取用户信息");
                 return fetchInfoPlus("cache");
             } else {
-                console.log("未绑定urp");
                 _this.setData({ bindUrp: false });
                 return false;
             }
@@ -52,7 +44,6 @@ Page({
                 return false;
             }
             var { ret, pass } = data;
-            console.log("获取用户信息成功");
             if (!pass) {
                 showToastError("urp密码错误");
                 navigateToLogin();
@@ -68,14 +59,11 @@ Page({
                 username,
                 name
             });
-            console.log("已储存用户信息到storage和globalData");
-            console.log("开始获取头像");
             return getAvatar().then((data) => {
                 wx.hideToast();
                 if (!data) {
                     return false;
                 }
-                console.log("获取头像成功");
                 var { avatar } = data;
                 globalData.avatarSeed = avatar;
                 _this.updateIdenticon(avatar);

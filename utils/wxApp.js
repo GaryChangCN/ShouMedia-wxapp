@@ -51,12 +51,10 @@ function wxAuth() {
         //这里是开发时期的问题，这里checkSession提示成功，但是并没有！！！！
         var thirdSession = getLocalThirdSession();
         if (thirdSession && checkSession) {
-            console.log("有thirdSession");
             return {
                 wxAuth: true
             }
         } else {
-            console.log("无thirdSession，开始获取并且存贮");
             return fetchThirdSession().then((data) => {
                 var {thirdSession}=data;
                 return new Promise((resolve, reject) => {
@@ -64,7 +62,6 @@ function wxAuth() {
                         key: '3rd_session',
                         data: thirdSession,
                         success() {
-                            console.log("获取thirdSession成功，已存贮");
                             resolve({
                                 wxAuth: true
                             });

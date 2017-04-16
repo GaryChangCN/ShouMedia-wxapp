@@ -439,8 +439,6 @@ function fetchBindUrp() {
                 if (err) {
                     reject(netError);
                 } else {
-                    console.log("获取绑定urp状态信息成功");
-                    console.log(data);
                     resolve(data);
                 }
             },

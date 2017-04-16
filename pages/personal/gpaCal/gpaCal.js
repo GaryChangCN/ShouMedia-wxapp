@@ -9,7 +9,11 @@ Page({
 		
 	},
 	importAchi(){
-		this.fetch();
+		if(checkMemoryBindUrp()){
+			this.fetch();
+		}else{
+			navigateToLogin();
+		}
 	},
 	handleChange(e){
 		var {index,item}=e.currentTarget.dataset;

@@ -9,19 +9,19 @@ Page({
 		unReadMsgCount:0
 	},
 	onLoad(){
-		// if(checkMemoryBindUrp()){
-		// 	try {
+		if(checkMemoryBindUrp()){
+			try {
 				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
 				this.setData({userInfo});
-		// 	} catch (error) {
-		// 		showToastError("获取个人信息失败");
-		// 		wx.redirectTo({
-		// 			url: '../index/index'
-		// 		});
-		// 	}
-		// }else{
-		// 	navigateToLogin();
-		// }
+			} catch (error) {
+				showToastError("获取个人信息失败");
+				wx.redirectTo({
+					url: '../index/index'
+				});
+			}
+		}else{
+			navigateToLogin();
+		}
 	},
 	onReady(){
 		this.fetchAvatar()

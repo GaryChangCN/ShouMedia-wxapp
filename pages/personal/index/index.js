@@ -1,29 +1,33 @@
 var {showToastError,checkMemoryBindUrp,navigateToLogin,showToastSuccess}=require("../../../utils/wxApp");
-var {getAvatar,updateAvatar,unBindUrp}=require('../../../utils/service');
+var {getAvatar,updateAvatar,unBindUrp,fetchMsg}=require('../../../utils/service');
 var blockies=require("../../../utils/blockies");
 Page({
 	data: {
 		seed:"",
 		seedValue:"",
-		seedDisabled:true
+		seedDisabled:true,
+		unReadMsgCount:0
 	},
 	onLoad(){
-		if(checkMemoryBindUrp()){
-			try {
+		// if(checkMemoryBindUrp()){
+		// 	try {
 				var userInfo=JSON.parse(wx.getStorageSync('userInfo'));
 				this.setData({userInfo});
-			} catch (error) {
-				showToastError("获取个人信息失败");
-				wx.redirectTo({
-					url: '../index/index'
-				});
-			}
-		}else{
-			navigateToLogin();
-		}
+		// 	} catch (error) {
+		// 		showToastError("获取个人信息失败");
+		// 		wx.redirectTo({
+		// 			url: '../index/index'
+		// 		});
+		// 	}
+		// }else{
+		// 	navigateToLogin();
+		// }
 	},
 	onReady(){
 		this.fetchAvatar()
+	},
+	onShow(){
+		this.fetchUnreadMsg();
 	},
 	handleLogout(){
 		var _this=this;
@@ -54,6 +58,18 @@ Page({
 			}
 		}
 	},
+	fetchUnreadMsg(){
+		var _this=this;
+		fetchMsg("GET",null,"unread").then(({pass,count})=>{
+			if(pass){
+				_this.setData({unReadMsgCount:count});
+			}else{
+				navigateToLogin();
+			}
+		}).catch((err)=>{
+			showToastError(err);
+		});
+	},
 	fetchAvatar(){
 		var _this=this;
 		getAvatar().then(({avatar})=>{
@@ -83,10 +99,13 @@ Page({
 		unBindUrp().then(({pass})=>{
 			if(!pass){
 				showToastSuccess("解除成功");
+				var {memoryBindUrp,userInfo}=getApp().globalData;
+				wx.removeStorage({key:'userInfo'});
+				wx.removeStorage({key:'userInfoVisible'});
+				wx.removeStorage({key:'schoolDate'});
 				wx.navigateTo({
 					url: '../../index/index'
 				});
-				getApp().globalData.memoryBindUrp=false;
 			}else{
 				showToastError("解除失败");
 			}

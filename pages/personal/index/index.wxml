@@ -36,8 +36,9 @@
 			<view class="a1">
 				<i class="iconfont icon-xiaoxitongzhi pre"></i>
 			</view>
-			<view class="a2">
+			<view class="a2 msg-count">
 				<text>消息通知</text>
+				<view id="count" hidden="{{!unReadMsgCount}}">{{unReadMsgCount}}</view>
 			</view>
 			<view class="a3"></view>
 			<view class="a4">

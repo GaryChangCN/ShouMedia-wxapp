@@ -23,6 +23,7 @@ module.exports = {
     fetchMsgDetail
 }
 
+//获取消息详情
 function fetchMsgDetail(msgId){
     return new Promise((resolve,reject)=>{
         wx.request({
@@ -43,10 +44,10 @@ function fetchMsgDetail(msgId){
 }
 
 //获取消息通知
-function fetchMsg(method="GET",msgId="") {
+function fetchMsg(method="GET",msgId="",type="list") {
     return new Promise((resolve,reject)=>{
         wx.request({
-            url: `${url}/api/wxapp/msg?thirdSession=${getLocalThirdSession()}&msgId=${msgId}`,
+            url: `${url}/api/wxapp/msg?thirdSession=${getLocalThirdSession()}&msgId=${msgId}&type=${type}`,
             method:method,
             success(res) {
                 var {err,data}=res.data;

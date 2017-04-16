@@ -22,11 +22,6 @@ Page({
     },
     onShow(){
         console.log("显示主页");
-        if(this.data.onLoad){
-            console.log("已经加载中，不做show生命周期");
-            return ;
-        }
-        console.log("show 时候检查");
         if(checkMemoryBindUrp()){
             this.updateFromMemory();
         }else{
@@ -35,6 +30,7 @@ Page({
     },
     updateFromMemory(){
         var {avatarSeed,userInfo}=getApp().globalData;
+        console.log("更新头像");
         this.updateIdenticon(avatarSeed);
         var {username,name}=userInfo;
         this.setData({
